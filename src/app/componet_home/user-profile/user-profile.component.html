@@ -1,0 +1,282 @@
+<div class="page-title-section section" style="background-image: url(../../assets/images/bg/breadcrumb-shop.jpg);">
+  <div class="page-title pt-lg-10 pt-10">
+    <div class="container">
+      <h1 class="title">Profile</h1>
+    </div>
+  </div>
+</div>
+
+<div class="section section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="row gutters-sm">
+          <div class="col-md-4 mb-3">
+            <div class="cardprofile ">
+              <div class="cardprofile-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                  <img style="max-height: 400px;" src="{{imageAccountUrl}}{{account.photo||'No_image_available.png'}}"
+                    class="w-100" id="img-preview" (click)="clickInputImage()">
+                  <input style="display: none;" id="FileUploadInput" type="file" name="image" placeholder="Photo"
+                    accept="image/png, image/jpeg" (change)="changeImageFile($event)">
+                  <div class="mt-3">
+                    <h4>{{photoImage}}</h4>
+                    <button [hidden]="!changerImage" class="btn btn-outline-info mt-3"
+                      (click)="resetImage()">Reset</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 mb-3">
+            <div class="cardprofile">
+              <div class="cardprofile-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h2 class="mb-0">UserName</h2>
+                  </div>
+                  <div class="col-sm-9 text-secondary d-flex align-items-center fs-5" style="min-height: 36px;">
+                    {{account.username}}
+                  </div>
+                </div>
+                <hr>
+                <div class="row" [hidden]="!edit">
+                  <div class="col-sm-3">
+                    <h2 class="mb-0">Password</h2>
+                  </div>
+                  <div class="col-sm-9 text-secondary d-flex align-items-center fs-5" style="min-height: 36px;">
+                    <input type="password" name="password" id="password" [(ngModel)]="account.password"
+                      (focus)="changerPassword()" (blur)="resetPass()">
+                  </div>
+                </div>
+                <hr [hidden]="!edit">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h2 class="mb-0">Full Name</h2>
+                  </div>
+                  <div class="col-sm-9 text-secondary d-flex align-items-center fs-5" style="min-height: 36px;">
+                    <span [hidden]="edit">{{account.fullname}}</span>
+                    <input [hidden]="!edit" type="text" name="fullname" [(ngModel)]="account.fullname">
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h2 class="mb-0">Email</h2>
+                  </div>
+                  <div class="col-sm-9 text-secondary d-flex align-items-center fs-5" style="min-height: 36px;">
+                    <span [hidden]="edit">{{account.email}}</span>
+                    <input [hidden]="!edit" type="text" name="email" [(ngModel)]="account.email">
+                  </div>
+                </div>
+                <hr>
+
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h2 class="mb-0">Gender</h2>
+                  </div>
+                  <div class="col-sm-9 text-secondary d-flex align-items-center fs-5" style="min-height: 36px;">
+                    <span [hidden]="edit">{{(account.gender)?'Male':'Female'}}</span>
+                    <div class="col-10 row d-flex justify-content-around m-0" *ngIf="edit">
+                      <div class="col-6 form-check d-flex align-items-center">
+                        <input class="form-check-input my-auto" type="radio" name="flexRadioDefault"
+                          id="flexRadioDefault1" [value]=true [(ngModel)]="account.gender">
+                        <span class="form-check-label my-0 mx-2" for="flexRadioDefault1">
+                          Male
+                        </span>
+                      </div>
+                      <div class="col-6 form-check d-flex align-items-center">
+                        <input class="form-check-input my-auto" type="radio" name="flexRadioDefault"
+                          id="flexRadioDefault2" [value]=false [(ngModel)]="account.gender">
+                        <span class="form-check-label my-0 mx-2" for="flexRadioDefault2">
+                          Female
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h2 class="mb-0">Birthday</h2>
+                  </div>
+                  <div class="col-sm-9 text-secondary d-flex align-items-center fs-5" style="min-height: 36px;">
+                    <span [hidden]="edit">{{account.birthday|date:"dd/MM/yyyy"}}</span>
+                    <input [hidden]="!edit" type="date" name="birthday" placeholder="Birthday"
+                      [(ngModel)]="birthdayValue">
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h2 class="mb-0">Phone</h2>
+                  </div>
+                  <div class="col-sm-9 text-secondary d-flex align-items-center fs-5" style="min-height: 36px;">
+                    <span [hidden]="edit">{{account.phone}}</span>
+                    <input [hidden]="!edit" type="text" name="phone" [(ngModel)]="account.phone">
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h2 class="mb-0">Address</h2>
+                  </div>
+                  <div class="col-sm-9 text-secondary d-flex align-items-center fs-5" style="min-height: 36px;">
+                    <span [hidden]="edit">{{account.address}}</span>
+                    <input [hidden]="!edit" type="text" name="address" [(ngModel)]="account.address">
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="d-flex justify-content-around" *ngIf="!edit">
+                      <button class="btn btn-outline-success" (click)="OnOffEdit()">Edit</button>
+                      <!-- <button class="btn btn-info">Edit</button> -->
+                    </div>
+
+                    <div class="d-flex justify-content-around" *ngIf="edit">
+                      <button class="btn btn-outline-success" [disabled]="updateBtnDisabled"
+                        (click)="update()">Update</button>
+                      <button class="btn btn-outline-secondary" (click)="refreshAccount()">Cancel</button>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="row gutters-sm p-0">
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="btn btn-outline-info text-dark active" id="nav-table-order-tab" data-bs-toggle="tab"
+                  data-bs-target="#nav-table-order" type="button" role="tab" aria-controls="nav-table-order"
+                  aria-selected="true">Order</button>
+                <button class="btn btn-outline-info text-dark" id="nav-table-orderdetail-tab" data-bs-toggle="tab"
+                  data-bs-target="#nav-table-orderdetail" type="button" role="tab" aria-controls="nav-table-orderdetail"
+                  aria-selected="false">Order Detail</button>
+                <button class="btn btn-outline-info text-dark" id="nav-table-favourite-tab" data-bs-toggle="tab"
+                  data-bs-target="#nav-table-favourite" type="button" role="tab" aria-controls="nav-table-favourite"
+                  aria-selected="false">Your Favourites</button>
+
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="nav-table-order" role="tabpanel"
+                aria-labelledby="nav-table-order-tab" tabindex="0">
+                <div class="outer-wrapper my-2 mx-2">
+                  <div class="table-wrapper">
+                    <table class="table table-bordered m-0 fs-5 table-hover">
+                      <thead class="">
+                        <tr class="text-center">
+                          <th scope="col">#</th>
+                          <th scope="col">View</th>
+                          <th scope="col">Order Id</th>
+                          <th scope="col">Order Date</th>
+                          <th scope="col">Payment Method</th>
+                          <th scope="col">Total Price</th>
+                          <th scope="col">Order Phone</th>
+                          <th scope="col">Order Address</th>
+                          <th scope="col">Note</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="align-middle text-center " *ngFor="let item of listAllOrder;index as i">
+                          <td class="text-center" scope="row">{{i+1}}</td>
+                          <th scope="col"><a (click)="showDetail(item.id)"><i class="fad fa-eye"
+                                aria-hidden="true"></i></a></th>
+                          <td class="text-center">{{item?.id}}</td>
+                          <td>{{item?.createDate|date:"dd/MM/yyyy"}}</td>
+                          <td>{{item?.paymentmethod}}</td>
+                          <td>{{totalPrice(item?.id)| currency:'VND':'VNĐ'}}</td>
+                          <td>{{item?.phone}}</td>
+                          <td>{{item?.address}}</td>
+                          <td>{{item?.note}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+              </div>
+              <div class="tab-pane fade" id="nav-table-orderdetail" role="tabpanel"
+                aria-labelledby="nav-table-orderdetail-tab" tabindex="0">
+                <div class="outer-wrapper my-2 mx-2">
+                  <div class="table-wrapper">
+                    <table class="table table-bordered fs-5 table-hover">
+                      <thead class="">
+                        <tr class="text-center">
+                          <th scope="col" style="vertical-align: center;"><button
+                              class="btn btn-outline-success py-1 px-2 " style="height: 30px;"
+                              (click)="allDetail()">All</button></th>
+                          <!-- <th scope="col">Id</th> -->
+                          <th scope="col">Id Order</th>
+                          <th colspan="3" scope="col">Product</th>
+                          <th scope="col">Total Price</th>
+                          <th scope="col">Total Quantity</th>
+                          <th scope="col">Extra Details</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="align-middle text-center" *ngFor="let item of listAllOrderDetail;index as i">
+                          <td class="text-center" scope="row">{{i+1}}</td>
+                          <!-- <td class="text-center">{{item?.id}}</td> -->
+                          <td class="text-center">{{item?.orderProduct.id}}</td>
+                          <td style="width: 150px; cursor: pointer;" [routerLink]="['/product-details',item?.product.id]"
+                            routerLinkActive="router-link-active"> <img
+                              src="{{imageProductUrl}}{{item?.product.image1}}"></td>
+                          <td style="cursor: pointer;" [routerLink]="['/product-details',item?.product.id]"
+                            routerLinkActive="router-link-active">{{item?.product.name}}</td>
+                          <td>{{item?.product.price|currency:'VND':'VNĐ'}}</td>
+                          <td>{{item?.price|currency:'VND':'VNĐ'}}</td>
+                          <td class="text-center">{{item?.quantity}}</td>
+                          <td>{{item?.extradetails}}</td>
+
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="nav-table-favourite" role="tabpanel"
+                aria-labelledby="nav-table-favourite-tab" tabindex="0">
+                <div class="outer-wrapper my-2 mx-2">
+                  <div class="table-wrapper">
+                    <table class="table table-bordered fs-5 table-hover">
+                      <thead class="">
+                        <tr class="text-center">
+                          <th scope="col" style="vertical-align: center;">#</th>
+                          <th colspan="3" scope="col">Product</th>
+                          <th scope="col" style="vertical-align: center;">Tool</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="align-middle text-center" *ngFor="let item of listAllLike;index as i">
+                          <td class="text-center" scope="row">{{i+1}}</td>
+                          <td style="width: 150px; cursor: pointer;" [routerLink]="['/product-details',item.id]"
+                            routerLinkActive="router-link-active"> <img src="{{imageProductUrl}}{{item?.image}}"></td>
+                          <td class="text-center" style="cursor: pointer;" [routerLink]="['/product-details',item.id]"
+                            routerLinkActive="router-link-active">{{item?.name}}</td>
+                          <td>{{item?.price |currency:'VND':'VNĐ'}}</td>
+                          <td><button class="unfavourite btn-delete text-center">
+                              <span class="mdi-delete m-0"><i class="fas fa-heart"></i> </span>
+                              <span class="mdi-delete-empty text-secondary m-0"><i class="fas fa-heart-broken"></i>
+                              </span>
+                            </button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

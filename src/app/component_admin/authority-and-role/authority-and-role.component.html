@@ -1,0 +1,112 @@
+<section class="mx-3">
+  <nav style="display: none;">
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="btn btn-outline-info text-dark active" id="nav-table-authority-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-table-authority" type="button" role="tab" aria-controls="nav-table-authority"
+        aria-selected="true">Authority</button>
+      <!-- <button class="btn btn-outline-info text-dark" id="nav-table-role-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-table-role" type="button" role="tab" aria-controls="nav-table-role"
+        aria-selected="true">...</button> -->
+
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-table-authority" role="tabpanel"
+      aria-labelledby="nav-table-authority-tab" tabindex="0">
+      <!-- Loading -->
+      <div *ngIf="loading" class="d-flex flex-column align-items-center justify-content-center bg-light"
+        style="height: 830px;">
+        <div class="loader">
+          <div class="orbe" style="--index: 0"></div>
+          <div class="orbe" style="--index: 1"></div>
+          <div class="orbe" style="--index: 2"></div>
+          <div class="orbe" style="--index: 3"></div>
+          <div class="orbe" style="--index: 4"></div>
+        </div>
+      </div>
+      <!-- Loading -->
+      <div *ngIf="!loading" class="outer-wrapper my-2 mx-2">
+        <div class="table-wrapper">
+          <table class="table">
+            <thead class="">
+              <tr class="text-center">
+                <th scope="col">#</th>
+                <!-- <th scope="col">Id</th> -->
+                <th scope="col">Username</th>
+                <th scope="col">Fullname</th>
+                <th scope="col" *ngFor="let role of listAllRole">{{role.id}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="align-middle text-center" *ngFor="let item of listAllAccount;index as i">
+                <td class="text-center" scope="row">{{i+1}}</td>
+                <!-- <td class="text-center">{{item?.id}}</td> -->
+                <td>{{item?.username}}</td>
+                <td>{{item?.fullname}}</td>
+                <td class="p-0" *ngFor="let role of listAllRole">
+                  <div class="form-check d-flex align-items-center justify-content-center">
+                    <input class="form-check-input" type="checkbox" id="user" [checked]="authority_of(item,role)"
+                      (click)="authority_changed(item,role)">
+                  </div>
+                </td>
+                <!-- <td class="p-0">
+                  <div class="form-check d-flex align-items-center justify-content-center">
+                    <input class="form-check-input" type="checkbox" id="admin" [checked]="item?.role.id=='ADMIN'"
+                      (click)="changeAdmin(item?.id,$event)">
+                  </div>
+                </td>
+                <td class="p-0">
+                  <div class="form-check d-flex align-items-center justify-content-center">
+                    <input class="form-check-input" type="checkbox" id="dire" [checked]="item?.role.id=='DIRE'"
+                      (click)="changeDire(item?.id,$event)">
+                  </div>
+                </td> -->
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <!-- <div class="tab-pane fade show" id="nav-table-role" role="tabpanel" aria-labelledby="nav-table-role-tab"
+      tabindex="0">
+      <div class="outer-wrapper my-2 mx-2">
+        <div class="table-wrapper">
+          <table class="table m-0">
+            <thead class="">
+              <tr class="text-center">
+                <th scope="col">#</th>
+                <th scope="col">Id</th>
+                <th colspan="2" scope="col">Product</th>
+                <th scope="col">USER</th>
+                <th scope="col">ADMIN</th>
+                <th scope="col">DIRE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="align-middle text-center" *ngFor="let item of listAllRole;index as i">
+                <td>
+                  <button class="btn btn-outline-success p-1 mx-1" style="height: 35px;">Edit</button>
+                  <button class="btn btn-outline-primary p-1 mx-1" style="height: 35px;">Delete</button>
+                </td>
+                <td class="text-center" scope="row">{{i+1}}</td>
+                <td>{{item?.id}}</td>
+                <td>{{item?.product.id}}</td>
+                <td>{{item?.product.name}}</td>
+                <td><input type="checkbox" id="user" checked="{{item.role.id}}">
+                </td>
+                <td><input type="checkbox" id="admin" checked="{{item.role.id}}">
+                </td>
+                <td><input type="checkbox" id="dire" checked="{{item.role.id}}">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div> -->
+
+
+  </div>
+</section>

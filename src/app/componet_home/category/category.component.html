@@ -1,0 +1,42 @@
+<div class="page-title-section section" style="background-image: url(../../assets/images/bg/breadcrumb-shop.jpg);">
+  <div class="page-title pt-lg-10 pt-10">
+    <div class="container">
+      <h1 class="title">Category</h1>
+    </div>
+  </div>
+</div>
+
+<div class="section section-padding-t150-b130 section-fluid">
+  <div class="container">
+    <div class="row row-cols-xl-3 row-cols-lg-2 mb-n6">
+      <div class="col mb-6" data-aos="fade-up" *ngFor="let item of list">
+
+        <!-- Single Event Start -->
+        <!-- <a class=" hover-box-shadow btn-hover-primary text-center"
+          [routerLink]="['/category',item.id]" routerLinkActive="router-link-active">
+          <h3 class="title">{{item.name}}</h3>
+        </a> -->
+        <button [routerLink]="['/category',item.id]" routerLinkActive="router-link-active">
+          <span class="label">{{item.name}}</span>
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50" height="50" ><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
+          </span>
+        </button>
+        <!-- <a class="single-event hover-box-shadow text-center"
+          [routerLink]="['/category',item.id]" routerLinkActive="router-link-active">
+          <div class="d-flex justify-content-center align-items-center" style="height: 100%; width: 100%;">
+            <div class="event-head">
+              <h3 class="title">{{item.name}}</h3>
+            </div>
+          </div>
+        </a> -->
+        <!-- Single Event End -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mt-10 text-center" data-aos="fade-up">
+        <a class="link" href="#"><mark>Loading more </mark></a>
+      </div>
+    </div>
+  </div>
+</div>

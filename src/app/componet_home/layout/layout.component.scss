@@ -1,0 +1,250 @@
+
+
+
+// =================================================================================
+.main-loading-active {
+  background: rgba(0, 0, 0, 0.92) none repeat scroll 0 0;
+  width: 100%;
+  min-height: 100vh;
+  padding: 32px 46px 39px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 9999;
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+@media only screen and (max-width: 767px) {
+  .main-loading-active {
+    padding: 32px 20px 39px;
+  }
+}
+.main-loading-active.inside {
+  opacity: 1;
+  visibility: visible;
+  z-index: 9999999;
+}
+.main-loading-active.inside .sidebar-loading-input {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translate(-50%, -50%) scale(1);
+  -ms-transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1);
+}
+.main-loading-active.inside .sidebar-loading-input input {
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+  -webkit-transition: 0.5s ease-out 0.3s;
+  -o-transition: 0.5s ease-out 0.3s;
+  transition: 0.5s ease-out 0.3s;
+  border-bottom-color: #fff;
+}
+.main-loading-active.inside .sidebar-loading-input p {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.sidebar-loading-input {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(0.8);
+  -ms-transform: translate(-50%, -50%) scale(0.8);
+  transform: translate(-50%, -50%) scale(0.8);
+  display: inline-block;
+  padding: 0 50px;
+  width: 75%;
+  text-align: center;
+  font-size: 18px;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all ease-in-out 0.3s;
+  -o-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1599px) {
+  .sidebar-loading-input {
+    padding: 0 10px;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .sidebar-loading-input {
+    padding: 0 10px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .sidebar-loading-input {
+    padding: 0 10px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .sidebar-loading-input {
+    padding: 0 20px;
+    width: 100%;
+  }
+}
+.sidebar-loading-input .form-loading {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.sidebar-loading-input .form-loading input {
+  padding: 10px 0;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 5px solid transparent;
+  background-color: transparent;
+  font-size: 50px;
+  width: 100%;
+  height: auto;
+  color: #fff;
+  -webkit-transform: scale3d(0, 1, 1);
+  transform: scale3d(0, 1, 1);
+  -webkit-transform-origin: 0 50%;
+  -ms-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  -o-transition: transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1599px) {
+  .sidebar-loading-input .form-loading input {
+    font-size: 150px;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .sidebar-loading-input .form-loading input {
+    font-size: 120px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .sidebar-loading-input .form-loading input {
+    font-size: 80px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .sidebar-loading-input .form-loading input {
+    font-size: 50px;
+  }
+}
+.sidebar-loading-input .form-loading input::-webkit-input-placeholder,
+.sidebar-loading-input .form-loading input::-webkit-input-placeholder {
+  color: #fff;
+}
+.sidebar-loading-input .form-loading input::-webkit-input-placeholder,
+.sidebar-loading-input .form-loading input::-webkit-input-placeholder {
+  color: #fff;
+}
+.sidebar-loading-input .form-loading input::placeholder,
+.sidebar-loading-input .form-loading input::-webkit-input-placeholder,
+.sidebar-loading-input .form-loading input::-moz-placeholder,
+.sidebar-loading-input .form-loading input:-ms-input-placeholder,
+.sidebar-loading-input .form-loading input::placeholder {
+  color: #fff;
+}
+.sidebar-loading-input .form-loading button {
+  background-color: transparent;
+  border: medium none;
+  color: #fff;
+  font-size: 30px;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+.sidebar-loading-input p {
+  font-size: 90%;
+  font-weight: bold;
+  display: block;
+  padding: 11px 0;
+  text-align: right;
+  opacity: 0;
+  line-height: 1.6;
+  color: #fff;
+  -webkit-transform: translate3d(0, 50px, 0);
+  transform: translate3d(0, 50px, 0);
+  -webkit-transition: opacity 0.4s, -webkit-transform 0.4s;
+  transition: opacity 0.4s, -webkit-transform 0.4s;
+  -o-transition: opacity 0.4s, transform 0.4s;
+  transition: opacity 0.4s, transform 0.4s;
+  transition: opacity 0.4s, transform 0.4s, -webkit-transform 0.4s;
+}
+@media only screen and (max-width: 767px) {
+  .sidebar-loading-input p {
+    font-size: 14px;
+  }
+}
+// =================================================================================
+
+
+.spinner {
+  height: 50px;
+  width: max-content;
+  font-size: 50px;
+  font-weight: 600;
+  font-family: monospace;
+  letter-spacing: 1em;
+  color: #FF2C2C;
+  filter: drop-shadow(0 0 10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+ .spinner span {
+  animation: loading6454 1.75s ease infinite;
+ }
+
+ .spinner span:nth-child(2) {
+  animation-delay: 0.25s;
+ }
+
+ .spinner span:nth-child(3) {
+  animation-delay: 0.5s;
+ }
+
+ .spinner span:nth-child(4) {
+  animation-delay: 0.75s;
+ }
+
+ .spinner span:nth-child(5) {
+  animation-delay: 1s;
+ }
+
+ .spinner span:nth-child(6) {
+  animation-delay: 1.25s;
+ }
+
+ .spinner span:nth-child(7) {
+  animation-delay: 1.5s;
+ }
+
+ @keyframes loading6454 {
+  0%, 100% {
+   transform: translateY(0);
+  }
+
+  50% {
+   transform: translateY(-10px);
+  }
+ }

@@ -1,0 +1,149 @@
+<!-- Page Title Section Start -->
+<div class="page-title-section section" style="background-image: url(../../assets/images/bg/breadcrumb-shop.jpg);">
+  <div class="page-title pt-lg-10 pt-10">
+    <div class="container">
+      <h1 class="title">Checkout</h1>
+    </div>
+  </div>
+</div>
+<!-- Page Title Section End -->
+
+<!--Wishlist Section Start -->
+<div class="section section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <!-- Checkout Form Start-->
+        <div action="#" class="checkout-form">
+          <div class="row">
+            <div class="col-lg-7" data-aos="fade-up">
+              <!-- Billing Address -->
+              <div id="billing-form" class="mb-2 billing-form">
+                <h4 class="checkout-title">Billing Address</h4>
+                <div class="row">
+                  <div class="col-12 mb-4">
+                    <label>Full Name<span class="text-primary">*</span></label>
+                    <input type="text" name="fullname" placeholder="Full Name" [(ngModel)]="fullname">
+                  </div>
+                  <div class="col-12 mb-4">
+                    <label>Email Address<span class="text-primary">*</span></label>
+                    <input type="email" name="email" placeholder="Email Address" [(ngModel)]="email">
+                  </div>
+                  <div class="col-12 mb-4">
+                    <label>Phone no<span class="text-primary">*</span></label>
+                    <input type="text" name="phone" placeholder="Phone number" [(ngModel)]="phoneNo">
+                  </div>
+                  <div class="col-12 mb-4">
+                    <label>Address<span class="text-primary">*</span></label>
+                    <input type="text" name="address" placeholder="Address" [(ngModel)]="address">
+                  </div>
+                  <div class="col-12 mb-4">
+                    <label>Note</label>
+                    <textarea name="" id="" maxlength="255" style="resize: none;" [(ngModel)]="note"></textarea>
+                  </div>
+                  <!-- <div class="col-md-6 col-12 mb-4">
+                    <label>Country*</label>
+                    <select>
+                      <option>Bangladesh</option>
+                      <option>China</option>
+                      <option>country</option>
+                      <option>India</option>
+                      <option>Japan</option>
+                    </select>
+                  </div> -->
+                  <!-- <div class="col-md-6 col-12 mb-4">
+                    <label>State*</label>
+                    <input type="text" placeholder="State">
+                  </div> -->
+                  <!-- <div class="col-md-6 col-12 mb-4">
+                    <label>Zip Code*</label>
+                    <input type="text" placeholder="Zip Code">
+                  </div> -->
+                  <div class="col-12 mb-4">
+                    <div class="check-box">
+                      <input type="checkbox" id="create_account" [(ngModel)]="sendAcc">
+                      <label for="create_account">Do you want your account sent to your email?</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-lg-5" data-aos="fade-up" data-aos-delay="300">
+              <div class="row">
+
+                <!-- Cart Total -->
+                <div class="col-12 mb-12">
+                  <h4 class="checkout-title">Cart Total</h4>
+                  <div class="checkout-cart-total">
+                    <h4>Product <span>Total</span></h4>
+                    <ul>
+                      <li *ngFor="let item of ShopCartList">{{item.product.name}}
+                        <b class="badge bg-info text-dark me-1">{{item?.flavororcolor}}</b>
+                        <b class="badge bg-info text-dark">{{item?.size}}</b>
+                        <span>x {{item.quantity}}</span>
+                        <br>
+                        <span>{{item.totalprice | currency:'VND':'VNĐ'}}</span>
+                        <hr>
+                      </li>
+                      <br>
+                    </ul>
+                    <p>Sub Total <span>{{total_price | currency:'VND':'VNĐ'}}</span></p>
+                    <h4>Grand Total <span class="badge bg-primary fs-5">{{total_price | currency:'VND':'VNĐ'}}</span></h4>
+                  </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="col-12">
+
+                  <h4 class="checkout-title">Payment Method<span class="text-primary">*</span> </h4>
+
+                  <div class="checkout-payment-method">
+                    <div class="single-method">
+                      <input type="radio" id="payment_cash" name="payment-method"
+                      [(ngModel)]="paymentMethod" value="Cash on Delivery">
+                      <label for="payment_cash">Cash on Delivery</label>
+                    </div>
+
+                    <div class="single-method">
+                      <input type="radio" id="payment_bank" name="payment-method"
+                        [(ngModel)]="paymentMethod" value="Direct Bank Transfer">
+                      <label for="payment_bank">Direct Bank Transfer</label>
+                    </div>
+
+                    <div class="single-method">
+                      <input type="radio" id="payment_paypal" name="payment-method"
+                        [(ngModel)]="paymentMethod" value="Paypal">
+                      <label for="payment_paypal">Paypal</label>
+                    </div>
+
+                    <div class="single-method">
+                      <input type="radio" id="payment_payoneer" name="payment-method"
+                        [(ngModel)]="paymentMethod" value="Payoneer">
+                      <label for="payment_payoneer">Payoneer</label>
+                    </div>
+
+                    <!-- <div class="single-method">
+                      <input type="checkbox" id="accept_terms">
+                      <label for="accept_terms">I’ve read and accept the terms & conditions</label>
+                    </div> -->
+
+                  </div>
+
+                  <button class="btn btn-primary btn-hover-secondary btn-width-100 mt-6" (click)="placeOrder()">Place
+                    order</button>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!--Wishlist Section End -->

@@ -1,0 +1,71 @@
+<!-- Page Title Section Start -->
+<div class="page-title-section section" style="background-image: url(../../assets/images/bg/breadcrumb-blog.jpg);">
+  <div class="page-title pt-lg-10 pt-10">
+    <div class="container">
+      <h1 class="title">GYM BLOG</h1>
+    </div>
+  </div>
+</div>
+<!-- Page Title Section End -->
+
+<!-- Blog Grid Section Start -->
+<!-- section-padding-t140-b120 -->
+<div class="section section-fluid-80" style="padding-top: 50px; padding-bottom: 120px;">
+  <div class="container">
+    <div class="row row-cols-xl-3 row-cols-md-2 row-cols-1 mb-xl-n12 mb-n6">
+      <div class="col" data-aos="fade-up" *ngFor="let item of listData;index as i">
+        <!-- Single Blog Grid Start -->
+        <div [hidden]="!limitBlogs(i)" class="mb-6">
+          <div class="blog blog-grid-style-two">
+            <div class="thumbnail" style="max-height: 295px;">
+              <a class="image" [routerLink]="['/blog-details',item.id]" routerLinkActive="router-link-active"><img
+                  src="{{urlImg}}{{item.image}}" alt="Blog Image"></a>
+              <span class="badge"><i class="fal fa-quote-left"></i></span>
+            </div>
+            <div class="info p-6">
+              <h3 class="title"
+                style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; min-height: 84px;">
+                <a [routerLink]="['/blog-details',item.id]" routerLinkActive="router-link-active">{{item.title}}</a>
+              </h3>
+              <ul class="meta">
+                <!-- <li>19 Augs, 2018 - by John Snow</li> -->
+                <li>{{showTopicName(item.topic)}}</li>
+              </ul>
+              <div class="desc">
+                <!-- <p>Lorem ipsum dolor sit amet, magna habemus ius ad, qui minimum voluptaria in. Ad mei modus quodsi complectitur, postea verterem persecuti cu est, sea epicuri.</p> -->
+              </div>
+              <a class="btn btn-outline-secondary btn-hover-primary fz-10" [routerLink]="['/blog-details',item.id]"
+                routerLinkActive="router-link-active">READ MORE</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Single Blog Grid End -->
+      </div>
+    </div>
+    <br>
+    <!-- <hr> -->
+    <div class="row m-0" data-aos="fade-up">
+      <div class="col-12 mt-xl-10 mt-10 text-center">
+        <a class="shop-load-more-btn" (click)="loadMoreBlogs()">
+          <div *ngIf="!loading">
+            Load More <i class="fal fa-arrow-down"></i>
+          </div>
+          <!-- Loading -->
+          <div *ngIf="loading" class="d-flex flex-column align-items-center justify-content-center"
+            style="height: 830px;">
+            <div class="loader">
+              <div class="orbe" style="--index: 0"></div>
+              <div class="orbe" style="--index: 1"></div>
+              <div class="orbe" style="--index: 2"></div>
+              <div class="orbe" style="--index: 3"></div>
+              <div class="orbe" style="--index: 4"></div>
+            </div>
+          </div>
+          <!-- Loading -->
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Blog Grid Section End -->

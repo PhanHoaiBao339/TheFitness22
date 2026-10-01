@@ -1,0 +1,51 @@
+<div class="bodysignin">
+  <div class="boxsignin">
+    <!-- <div class=" backgroundform"></div> -->
+    <div class="formsignin bg-light">
+      <div class="text-center">
+        <h2 style="font-size: 36px;">Sign in</h2>
+        <img src="assets/images/logo/logo.png" alt="Fitness Logo" style="height: 50px; width: 50px;">
+      </div>
+      <div class="text-center" style="min-height: 40px;">
+        <h3 class="text-success m-0 mt-2">{{isLoginMessageAccept$|async}}</h3>
+        <h3 class="text-warning m-0 mt-2">{{isLoginMessageError$|async}}</h3>
+      </div>
+      <div class="inputBoxsignin">
+        <span>Username</span>
+        <input name="username" type="text" [(ngModel)]="username" required="required" />
+        <i></i>
+      </div>
+      <div class="inputBoxsignin">
+        <span>Password</span>
+        <input name="password" type="password" [(ngModel)]="password" required="required" (keyup.enter)="login()" />
+        <i></i>
+      </div>
+      <div class="linkssignin">
+        <div class="d-flex align-items-center">
+          <input class="me-2" name="remember" type="checkbox" id="rememberInput" [(ngModel)]="remember"
+            (change)="changeRemember()" />
+          <span class="" id="remember" (click)="rememberClick()">Remember</span>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <button class="btn btn-outline-primary px-5 w-100" [disabled]="isDisable" (click)="login()" type="submit">
+          <span [hidden]="isDisable">Login</span>
+          <div class="d-flex align-items-center" style="height: 50px;" *ngIf="isDisable">
+            <div class="loader" *ngIf="isSuccess">
+              <div class="orbe" style="--index: 0"></div>
+              <div class="orbe" style="--index: 1"></div>
+              <div class="orbe" style="--index: 2"></div>
+              <div class="orbe" style="--index: 3"></div>
+              <div class="orbe" style="--index: 4"></div>
+            </div>
+            <span class="text-success" style="font-size: 50px;" [hidden]="isSuccess"><i class='bx bx-check'></i></span>
+          </div>
+        </button>
+      </div>
+      <div class="d-flex justify-content-between mt-3">
+        <a class="text-start" [routerLink]="['/home']" routerLinkActive="router-link-active"><i
+            class="far fa-angle-left"></i> Home</a>
+      </div>
+    </div>
+  </div>
+</div>

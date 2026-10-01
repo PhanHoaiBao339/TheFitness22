@@ -1,0 +1,514 @@
+<div id="page" class="section">
+  <!-- Header Section Start -->
+  <!-- Button trigger modal -->
+
+  <div class="header-section header-transparent sticky-header  header-fluid section">
+    <div class="header-inner">
+      <div class="container position-relative">
+        <div class="row justify-content-between align-items-center">
+          <!-- Header Logo Start -->
+          <div class="col-xl-2 col-auto p-0">
+            <div class="header-logo">
+              <a [routerLink]="['']" routerLinkActive="router-link-active">
+                <img class="dark-logo" src="assets/images/logo/logo.png" alt="Fitness Logo">
+                <img class="light-logo" src="assets/images/logo/logo.png" alt="Fitness Logo">
+              </a>
+            </div>
+          </div>
+          <!-- Header Logo End -->
+          <!-- Header Main Menu Start -->
+          <div class="col d-none d-xl-block p-0">
+            <div class="menu-column-area d-none d-xl-block position-static">
+              <nav class="site-main-menu">
+                <ul>
+                  <li>
+                    <a [routerLink]="['/home']" routerLinkActive="router-link-active"><span
+                        class="menu-text">Home</span></a>
+                  </li>
+                  <li class="has-children">
+                    <a [routerLink]="['/shop','all']" routerLinkActive="router-link-active"><span
+                        class="menu-text">Shop</span></a>
+                    <span class="menu-toggle"><i class="far fa-angle-down"></i></span>
+                    <ul class="sub-menu">
+                      <li><a [routerLink]="['/shop','protein']" routerLinkActive="router-link-active"><span
+                            class="menu-text">Protein</span></a></li>
+                      <li><a [routerLink]="['/shop','accessory']" routerLinkActive="router-link-active"><span
+                            class="menu-text">Accessory</span></a></li>
+                      <!-- <hr> -->
+                    </ul>
+                  </li>
+                  <li>
+                    <a [routerLink]="['/category']" routerLinkActive="router-link-active"><span
+                        class="menu-text">Category</span></a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['/our-program']" routerLinkActive="router-link-active"><span class="menu-text">Our
+                        Program</span></a>
+                  </li>
+
+                  <li class="has-children">
+                    <a [routerLink]="['/blog-grid','all']" routerLinkActive="router-link-active"><span
+                        class="menu-text">Blog</span></a>
+                    <span class="menu-toggle"><i class="far fa-angle-down"></i></span>
+                    <ul class="sub-menu">
+                      <li>
+                        <a [routerLink]="['/blog-grid','THN']" routerLinkActive="router-link-active">
+                          <span class="menu-text" title="Thể hình cho Nam">Men's Fitness</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a [routerLink]="['/blog-grid', 'THNN']" routerLinkActive="router-link-active">
+                          <span class="menu-text" title="Thể hình cho Nữ">Women's Fitness</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a [routerLink]="['/blog-grid', 'GATH']" routerLinkActive="router-link-active">
+                          <span class="menu-text" title="Chương trình đào tạo">Our Program</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a [routerLink]="['/blog-grid', 'KTTH']" routerLinkActive="router-link-active">
+                          <span class="menu-text" title="Kiến thức và kinh nghiệm">Experience</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a [routerLink]="['/blog-grid', 'DDTH']" routerLinkActive="router-link-active">
+                          <span class="menu-text" title="Dinh dưỡng">Nutrition</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a [routerLink]="['/blog-grid', 'TTTH']" routerLinkActive="router-link-active">
+                          <span class="menu-text" title="Tin tức">News</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a [routerLink]="['/blog-grid', 'TTNC']" routerLinkActive="router-link-active">
+                          <span class="menu-text" title="Bài tập theo nhóm cơ">Exercises For Muscle Group</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a [routerLink]="['/event']" routerLinkActive="router-link-active"><span
+                        class="menu-text">Event</span></a>
+                  </li>
+                  <li class="has-children">
+                    <a [routerLink]="['/about']" routerLinkActive="router-link-active"><span
+                        class="menu-text">Pages</span></a>
+                    <span class="menu-toggle"><i class="far fa-angle-down"></i></span>
+                    <ul class="sub-menu">
+                      <li><a [routerLink]="['/tools']" routerLinkActive="router-link-active"><span
+                        class="menu-text">Tools</span></a></li>
+                      <li><a [routerLink]="['/about']" routerLinkActive="router-link-active"><span
+                            class="menu-text">About</span></a></li>
+                      <li><a [routerLink]="['/team']" routerLinkActive="router-link-active"><span class="menu-text">Our
+                            Team</span></a></li>
+                      <li><a [routerLink]="['/contact']" routerLinkActive="router-link-active"><span
+                            class="menu-text">Contact</span></a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <!-- Header Main Menu End -->
+          <!-- Header Right Start -->
+          <div class="col-xl-3 col-auto d-flex align-items-center justify-content-end p-0">
+            <!-- Header Search Start -->
+            <div class="header-search-area mr-xl-4 mr-0">
+              <!-- Header Login Start -->
+              <div class="header-search">
+                <a href="javascript:void(0)" class="header-search-toggle"><i class="pe-7s-search pe-2x pe-va"></i></a>
+              </div>
+              <!-- Header Login End -->
+            </div>
+            <!-- Header Search End -->
+            <!-- Header Cart Start -->
+            <div class="header-cart">
+              <a class="header-cart-btn" [routerLink]="['/shopping-cart']" routerLinkActive="router-link-active"><span
+                  class="cart-count">{{total_quantity}}</span><i class="far fa-shopping-cart"></i></a>
+              <!-- Header Mini Cart Start -->
+              <div class="header-mini-cart">
+                <div class="inner">
+                  <!-- Header Mini Cart Product Start -->
+                  <div class="mini-cart-products">
+                    <div class="mini-cart-product" *ngFor="let item of ShopCartList; index as i ">
+                      <a [routerLink]="['/product-details',item?.product.id]" routerLinkActive="router-link-active"
+                        class="thumb"><img src="{{imageProductUrl}}{{item?.product.image1}}" alt=""></a>
+                      <div class="content">
+                        <a [routerLink]="['/product-details',item?.product.id]" routerLinkActive="router-link-active"
+                          class="title">{{item?.product.name}}</a>
+                        <span class="quantity">Flovar Or Color: {{item?.flavororcolor}}</span>
+                        <span class="quantity" [hidden]="item.size==''">Size: {{item?.size}}</span>
+                        <span class="quantity">{{item?.quantity}} x
+                          <span class="price">{{item?.product.price | currency:'VND':'VNĐ'}}</span></span>
+                        <span class="quantity">Total: <span class="price">{{item.totalprice |
+                            currency:'VND':'VNĐ'}}</span> </span>
+                      </div>
+                      <a class="remove" (click)="removeProcuctInCart(i)"><i class="far fa-times"></i></a>
+                    </div>
+                  </div>
+                  <!-- Header Mini Cart Product End -->
+                  <!-- Header Mini Cart Footer Start -->
+                  <div class="mini-cart-footer">
+                    <div class="mini-cart-total">
+                      <b>Total:</b>
+                      <span class="amount text-primary">{{total_price | currency:'VND':'VNĐ'}}</span>
+                    </div>
+                    <div class="mini-cart-buttons">
+                      <a [routerLink]="['/shopping-cart']" routerLinkActive="router-link-active"
+                        class="btn btn-primary btn-hover-secondary">View Cart</a>
+                      <button class="btn btn-outline-danger" (click)="CleanAllCart()">Clean All</button>
+                    </div>
+                  </div>
+                  <!-- Header Mini Cart Footer End -->
+                </div>
+              </div>
+              <!-- Header Mini Cart End -->
+            </div>
+            <!-- Header Cart End -->
+            <div>
+              <ul class="list-unstyled list-group list-group-horizontal" *ngIf="!(isLoggedSuccess$ |async)">
+                <li class="pe-2"><a [routerLink]="['/login']" routerLinkActive="router-link-active"><span
+                      class="menu-text">Sign
+                      In</span></a></li>
+                <li><a [routerLink]="['/signup']" routerLinkActive="router-link-active"><span class="menu-text">Sign
+                      Up</span></a></li>
+              </ul>
+              <nav class="site-main-menu" *ngIf="isLoggedSuccess$|async">
+                <ul>
+                  <li class="has-children">
+                    <a class="d-flex align-items-center py-0" [routerLink]="['/profile']" routerLinkActive="router-link-active">
+                      <img class="rounded-circle" style="width: 35px;" src="{{imageAccountUrl}}{{(isLoggedPhoto|async)||'No_image_available.png'}}">
+                      <!-- <i class="fal fa-user"></i> -->
+                     <span style="height: 20px;"  class="ps-1">{{isLoggedUsername$|async}}</span>
+                    </a>
+                    <span class="menu-toggle"><i class="far fa-angle-down"></i></span>
+                    <ul class="sub-menu ">
+                      <li>
+                        <h2 class="m-0" style="padding-left: 30px;">{{fullnameofuser|async}}</h2>
+                      </li>
+                      <hr>
+                      <li *ngIf="(isLoggedAdmin$|async)||(isLoggedDire$|async)"><a [routerLink]="['/admin/login']"
+                          routerLinkActive="router-link-active"><span class="menu-text">Admin Page</span></a>
+                      </li>
+                      <li><a [routerLink]="['/profile']" routerLinkActive="router-link-active"><span
+                            class="menu-text">Profile</span></a>
+                      </li>
+                      <hr>
+                      <li><a (click)="logout()"><span class="menu-text">Logout</span></a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <!-- Header Mobile Menu Toggle Start -->
+            <div class="header-mobile-menu-toggle d-xl-none ml-sm-2">
+              <a href="javascript:void(0)" class="toggle mobile-menu-toggle">
+                <i class="icon-top"></i>
+                <i class="icon-middle"></i>
+                <i class="icon-bottom"></i>
+              </a>
+            </div>
+            <!-- Header Mobile Menu Toggle End -->
+          </div>
+          <!-- Header Right End -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Header Section End -->
+  <div class="mobile-menu-active">
+    <div class="mobile-menu-icon">
+      <button class="mobile-menu-close"><i class="fal fa-times"></i></button>
+    </div>
+    <div class="mobile-menu-input">
+      <nav class="site-mobile-menu">
+        <ul>
+          <li>
+            <a [routerLink]="['/home']" routerLinkActive="router-link-active"><span class="menu-text">Home</span></a>
+          </li>
+          <li class="has-children">
+            <a [routerLink]="['/shop','all']" routerLinkActive="router-link-active"><span
+                class="menu-text">Shop</span></a>
+            <span class="menu-toggle"><i class="far fa-angle-down"></i></span>
+            <ul class="sub-menu">
+              <li><a [routerLink]="['/shop','protein']" routerLinkActive="router-link-active"><span
+                    class="menu-text">Protein</span></a></li>
+              <li><a [routerLink]="['/shop','accessory']" routerLinkActive="router-link-active"><span
+                    class="menu-text">Accessory</span></a></li>
+              <!-- <hr> -->
+            </ul>
+          </li>
+          <li>
+            <a [routerLink]="['/category']" routerLinkActive="router-link-active"><span
+                class="menu-text">Category</span></a>
+          </li>
+          <li>
+            <a [routerLink]="['/our-program']" routerLinkActive="router-link-active"><span class="menu-text">Our
+                Program</span></a>
+          </li>
+
+          <li class="has-children">
+            <a [routerLink]="['/blog-grid','all']" routerLinkActive="router-link-active"><span
+                class="menu-text">Blog</span></a>
+            <span class="menu-toggle"><i class="far fa-angle-down"></i></span>
+            <ul class="sub-menu">
+              <li>
+                <a [routerLink]="['/blog-grid','THN']" routerLinkActive="router-link-active">
+                  <span class="menu-text" title="Thể hình cho Nam">Men's Fitness</span>
+                </a>
+              </li>
+              <li>
+                <a [routerLink]="['/blog-grid', 'THNN']" routerLinkActive="router-link-active">
+                  <span class="menu-text" title="Thể hình cho Nữ">Women's Fitness</span>
+                </a>
+              </li>
+              <li>
+                <a [routerLink]="['/blog-grid', 'GATH']" routerLinkActive="router-link-active">
+                  <span class="menu-text" title="Chương trình đào tạo">Our Program</span>
+                </a>
+              </li>
+              <li>
+                <a [routerLink]="['/blog-grid', 'KTTH']" routerLinkActive="router-link-active">
+                  <span class="menu-text" title="Kiến thức và kinh nghiệm">Experience</span>
+                </a>
+              </li>
+              <li>
+                <a [routerLink]="['/blog-grid', 'DDTH']" routerLinkActive="router-link-active">
+                  <span class="menu-text" title="Dinh dưỡng">Nutrition</span>
+                </a>
+              </li>
+              <li>
+                <a [routerLink]="['/blog-grid', 'TTTH']" routerLinkActive="router-link-active">
+                  <span class="menu-text" title="Tin tức">News</span>
+                </a>
+              </li>
+              <li>
+                <a [routerLink]="['/blog-grid', 'TTNC']" routerLinkActive="router-link-active">
+                  <span class="menu-text" title="Bài tập theo nhóm cơ">Exercises For Muscle Group</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a [routerLink]="['/event']" routerLinkActive="router-link-active"><span class="menu-text">Event</span></a>
+          </li>
+          <li class="has-children">
+            <a [routerLink]="['/about']" routerLinkActive="router-link-active"><span class="menu-text">Pages</span></a>
+            <span class="menu-toggle"><i class="far fa-angle-down"></i></span>
+            <ul class="sub-menu">
+              <li><a [routerLink]="['/about']" routerLinkActive="router-link-active"><span
+                    class="menu-text">About</span></a></li>
+              <li><a [routerLink]="['/team']" routerLinkActive="router-link-active"><span class="menu-text">Our
+                    Team</span></a></li>
+              <li><a [routerLink]="['/contact']" routerLinkActive="router-link-active"><span
+                    class="menu-text">Contact</span></a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="main-search-active">
+    <div class="sidebar-search-icon">
+      <button class="search-close"><i class="fal fa-times"></i></button>
+    </div>
+    <div class="sidebar-search-input">
+      <form action="#">
+        <div class="form-search">
+          <input id="search" class="input-text" value="" placeholder="" type="search">
+          <button>
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </form>
+      <p class="form-description">Hit enter to search or ESC to close</p>
+    </div>
+  </div>
+
+  <div class="main-loading-active">
+    <div class="sidebar-loading-input">
+      <div class="form-loading">
+        <div class="spinner">
+          <span>L</span>
+          <span>O</span>
+          <span>A</span>
+          <span>D</span>
+          <span>I</span>
+          <span>N</span>
+          <span>G</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+
+  <div class="footer-section section section-fluid-240" style="background-color: #1C1C1C;">
+    <div class="container">
+      <!-- Footer Top Widgets Start -->
+      <div class="row mb-lg-14 mb-md-10 mb-6 align-items-center">
+        <!-- Footer Widget Start -->
+        <div class="col-lg-3 col-md-5 col-sm-12 col-12 col-12 mb-6">
+          <div class="footer-widget">
+            <div class="footer-logo">
+              <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo"></a>
+            </div>
+            <div class="footer-widget-content">
+              <div class="footer-social-inline">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-vimeo-v"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Footer Widget End -->
+        <!-- Footer Widget Start -->
+        <div class="offset-lg-1 col-lg-5 col-md-7 col-sm-12 col-12 mb-6">
+          <div class="footer-widget">
+            <div class="footer-widget-content">
+              <ul class="column-2">
+                <li><a href="#">Hastheme for Business</a></li>
+                <li><a href="#">Teach on Udemy</a></li>
+                <li><a href="#">Get the app</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Help and Support</a></li>
+                <li><a href="#">Affiliate</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Footer Widget End -->
+        <!-- Footer Widget Start -->
+        <div class="col-lg-3 col-md-6 col-sm-12 col-12 mb-6">
+          <div class="footer-widget">
+            <div class="footer-widget-content">
+              <div class="ft-instagram-list">
+                <div class="instagram-grid-wrap">
+                  <!-- Start Single Instagram -->
+                  <div class="item-grid grid-style--1">
+                    <div class="thumb">
+                      <a href="#">
+                        <img src="assets/images/instagram/instagram1.png" alt="instagram images">
+                      </a>
+                      <div class="item-info">
+                        <div class="inner">
+                          <a href="#"><i class="fas fa-heart"></i>1k</a>
+                          <a href="#"><i class="fas fa-comment-dots"></i>9</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Start Single Instagram -->
+                  <!-- Start Single Instagram -->
+                  <div class="item-grid grid-style--1">
+                    <div class="thumb">
+                      <a href="#">
+                        <img src="assets/images/instagram/instagram2.png" alt="instagram images">
+                      </a>
+                      <div class="item-info">
+                        <div class="inner">
+                          <a href="#"><i class="fas fa-heart"></i>1k</a>
+                          <a href="#"><i class="fas fa-comment-dots"></i>9</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Start Single Instagram -->
+                  <!-- Start Single Instagram -->
+                  <div class="item-grid grid-style--1">
+                    <div class="thumb">
+                      <a href="#">
+                        <img src="assets/images/instagram/instagram3.png" alt="instagram images">
+                      </a>
+                      <div class="item-info">
+                        <div class="inner">
+                          <a href="#"><i class="fas fa-heart"></i>1k</a>
+                          <a href="#"><i class="fas fa-comment-dots"></i>9</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Start Single Instagram -->
+                  <!-- Start Single Instagram -->
+                  <div class="item-grid grid-style--1">
+                    <div class="thumb">
+                      <a href="#">
+                        <img src="assets/images/instagram/instagram4.png" alt="instagram images">
+                      </a>
+                      <div class="item-info">
+                        <div class="inner">
+                          <a href="#"><i class="fas fa-heart"></i>1k</a>
+                          <a href="#"><i class="fas fa-comment-dots"></i>9</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Start Single Instagram -->
+                  <!-- Start Single Instagram -->
+                  <div class="item-grid grid-style--1">
+                    <div class="thumb">
+                      <a href="#">
+                        <img src="assets/images/instagram/instagram5.png" alt="instagram images">
+                      </a>
+                      <div class="item-info">
+                        <div class="inner">
+                          <a href="#"><i class="fas fa-heart"></i>1k</a>
+                          <a href="#"><i class="fas fa-comment-dots"></i>9</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Start Single Instagram -->
+                  <!-- Start Single Instagram -->
+                  <div class="item-grid grid-style--1">
+                    <div class="thumb">
+                      <a href="#">
+                        <img src="assets/images/instagram/instagram6.png" alt="instagram images">
+                      </a>
+                      <div class="item-info">
+                        <div class="inner">
+                          <a href="#"><i class="fas fa-heart"></i>1k</a>
+                          <a href="#"><i class="fas fa-comment-dots"></i>9</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Start Single Instagram -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Footer Widget End -->
+      </div>
+      <!-- Footer Top Widgets End -->
+      <!-- Footer Copyright Start -->
+      <div class="row">
+        <div class="col">
+          <p class="copyright">Copyright &copy; 2021 All Rights Reserved | Made with <i class="fal fa-heart"></i> by <a
+              href="https://hasthemes.com/">HasThemes</a>. </p>
+        </div>
+      </div>
+      <!-- Footer Copyright End -->
+    </div>
+  </div>
+
+  <!-- Scroll Top Start -->
+  <a href="#" class="scroll-top" id="scroll-top">
+    <i class="arrow-top fal fa-long-arrow-up"></i>
+    <i class="arrow-bottom fal fa-long-arrow-up"></i>
+  </a>
+  <!-- Scroll Top End -->
+
+</div>

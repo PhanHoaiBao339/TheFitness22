@@ -1,0 +1,1054 @@
+<div
+  class="page-title-section section"
+  style="background-image: url(../../assets/images/bg/breadcrumb-blog.jpg)"
+>
+  <div class="page-title pt-lg-10 pt-10">
+    <div class="container">
+      <h1 class="title">CALCULATE YOUR BMI</h1>
+    </div>
+  </div>
+</div>
+
+<div class="section pt-10">
+  <div class="container">
+    <div class="row d-flex flex-column">
+      <!-- Text 1 start -->
+      <div>
+        <h3>C&ocirc;ng cụ t&iacute;nh TDEE bằng chiều cao c&acirc;n nặng</h3>
+        <p>
+          <span
+            >Đối với c&ocirc;ng cụ t&iacute;nh TDEE bằng chiều cao c&acirc;n
+            nặng, th&igrave; đầu ti&ecirc;n bạn h&atilde;y bấm chọn giới
+            t&iacute;nh của m&igrave;nh. Bước tiếp theo, điền c&aacute;c chỉ số
+            như chiều cao, c&acirc;n nặng v&agrave; độ tuổi v&agrave;o &ocirc;
+            nhập dữ liệu. Trong đ&oacute;, &ocirc; chiều cao sẽ sử dụng hệ đơn
+            vị l&agrave; cm.</span
+          >
+        </p>
+        <p>
+          <span
+            ><span
+              >V&iacute; dụ, nếu l&agrave; một c&ocirc; g&aacute;i cao 1m55,
+              th&igrave; con số m&agrave; bạn cần điền v&agrave;o c&ocirc;ng cụ
+              l&agrave; 155. Sau đ&oacute;, bạn h&atilde;y bấm chọn mức độ vận
+              động tương ứng với chế độ tập luyện của m&igrave;nh, rồi bấm
+              n&uacute;t "T&iacute;nh TDEE" để nhận kết quả.</span
+            ></span
+          >
+        </p>
+      </div>
+      <!-- Text 1 end -->
+      <!-- Tool 1 start-->
+      <div class="d-flex flex-column tablebox align-items-lg-center col-12">
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <th colspan="2">Công cụ tính TDEE bằng chiều cao - cân nặng</th>
+              </tr>
+              <tr>
+                <td><label for="">Giới tính</label></td>
+                <td>
+                  <span class="check-right">
+                    <input
+                      [(ngModel)]="gender"
+                      checked=""
+                      name="gender"
+                      type="radio"
+                      value="male"
+                      id="man"
+                    />
+                    <label for="man">Nam</label>
+                  </span>
+                  <input
+                    [(ngModel)]="gender"
+                    name="gender"
+                    type="radio"
+                    value="female"
+                    id="woman"
+                    style="margin-left: 30px"
+                  />
+                  <label for="woman">Nữ</label>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="incao">Chiều cao (cm)</label></td>
+                <td>
+                  <input
+                    [(ngModel)]="height"
+                    class="nhapdulieu"
+                    id="incao"
+                    type="number"
+                    min="0"
+                    max="300"
+                    style="min-height: 30px; max-width: 250px;"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label for="innang">Cân nặng (kg)</label></td>
+                <td>
+                  <input
+                    [(ngModel)]="weight1"
+                    class="nhapdulieu"
+                    id="innang"
+                    type="number"
+                    min="0"
+                    max="300"
+                    style="min-height: 30px; max-width: 250px;"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label for="intuoi">Tuổi (năm)</label></td>
+                <td>
+                  <input
+                    [(ngModel)]="age"
+                    class="nhapdulieu"
+                    id="intuoi"
+                    type="number"
+                    min="0"
+                    max="100"
+                    style="min-height: 30px; max-width: 250px;"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label for="">Mức độ vận động</label></td>
+                <td>
+                  <input
+                    [(ngModel)]="time1"
+                    type="radio"
+                    value="0"
+                    name="value1"
+                  />
+                  <label for="">Không tập hoặc ít tập</label><br />
+                  <input
+                    [(ngModel)]="time1"
+                    type="radio"
+                    value="1"
+                    name="value1"
+                  />
+                  <label for="">1-3 buổi hoặc 1-3h / tuần</label><br />
+                  <input
+                    [(ngModel)]="time1"
+                    type="radio"
+                    value="2"
+                    name="value1"
+                  />
+                  <label for="">4-5 buổi hoặc 4-6h / tuần</label><br />
+                  <input
+                    [(ngModel)]="time1"
+                    type="radio"
+                    value="3"
+                    name="value1"
+                  />
+                  <label for="">6-7 buổi hoặc 7-9h / tuần</label><br />
+                  <input
+                    [(ngModel)]="time1"
+                    type="radio"
+                    value="4"
+                    name="value1"
+                  />
+                  <label for="">Trên 7 buổi hoặc 10h / tuần</label>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="2"
+                  style="justify-content: center; text-align: center"
+                >
+                  <input
+                    class="btn btn-outline-secondary btn-hover-primary"
+                    (click)="cal1()"
+                    type="button"
+                    value="Tính TDEE"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div
+          class="resultbox"
+          id="result"
+          style="
+            background: #d4efd0;
+            color: #3d8943;
+            font-weight: 700;
+            width: 600px;
+          "
+        >
+          <div style="padding: 15px; text-align: center; font-size: 16px">
+            Kết quả: {{ result1 }}
+          </div>
+        </div>
+      </div>
+      <!-- Tool 1 end-->
+
+      <!-- Text 2 start -->
+      <div>
+        <h3>C&ocirc;ng cụ t&iacute;nh TDEE bằng body fat</h3>
+        <p>
+          <span
+            >Đối với c&ocirc;ng cụ t&iacute;nh TDEE bằng body fat, th&igrave;
+            ch&uacute;ng sẽ mang lại kết quả ch&iacute;nh x&aacute;c hơn nếu bạn
+            biết ch&iacute;nh x&aacute;c phần trăm body fat của bản th&acirc;n.
+            Tuy nhi&ecirc;n, nếu kh&ocirc;ng chắc chắn về mức body fat của
+            m&igrave;nh, th&igrave; bạn n&ecirc;n d&ugrave;ng c&ocirc;ng cụ thứ
+            nhất.</span
+          ><br /><br /><span
+            >Trong trường hợp chưa biết phần trăm body fat của bản th&acirc;n,
+            th&igrave; bạn h&atilde;y sử dụng&nbsp;</span
+          ><a
+            href=""
+            target="_blank"
+            [routerLink]="['/tools/bdf']"
+            routerLinkActive="router-link-active"
+            ><b>c&ocirc;ng cụ t&iacute;nh body fat</b>
+            </a
+          ><span
+            >. Sau khi đ&atilde; c&oacute; đầy đủ chỉ số, bạn h&atilde;y nhập
+            to&agrave;n bộ th&ocirc;ng tin v&agrave;o c&ocirc;ng cụ
+            t&iacute;nh.</span
+          >
+        </p>
+        <p>
+          <span
+            ><span
+              >Sau đ&oacute;, bấm chọn mức độ vận động v&agrave; bấm n&uacute;t
+              "T&iacute;nh TDEE" để nhận kết quả. Lưu &yacute;, ở &ocirc; nhập
+              body fat, nếu c&oacute; chỉ số body fat l&agrave; 20,5% th&igrave;
+              bạn chỉ cần nhập phần số l&agrave; 20,5 chứ kh&ocirc;ng cần nhập
+              th&ecirc;m k&yacute; tự %.</span
+            ></span
+          >
+        </p>
+      </div>
+      <!-- Text 2 end -->
+      <!-- Tool 2 start -->
+      <div class="d-flex flex-column tablebox align-items-lg-center col-12">
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <th colspan="2">Công cụ tính TDEE bằng body fat</th>
+              </tr>
+              <tr>
+                <td><label for="innang">Cân nặng (kg)</label></td>
+                <td>
+                  <input
+                    [(ngModel)]="weight2"
+                    class="nhapdulieu"
+                    id="innang"
+                    type="number"
+                    min="0"
+                    max="300"
+                    style="min-height: 30px; max-width: 250px;"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label for="bodyfat">Body fat (%)</label></td>
+                <td>
+                  <input
+                    [(ngModel)]="bodyfat"
+                    class="nhapdulieu"
+                    id="bodyfat"
+                    type="number"
+                    min="0"
+                    max="100"
+                    style="min-height: 30px; max-width: 250px;"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td><label for="">Mức độ vận động</label></td>
+                <td>
+                  <input
+                    [(ngModel)]="time2"
+                    type="radio"
+                    value="time0"
+                    name="value2"
+                  />
+                  <label for="">Không tập hoặc ít tập</label><br />
+                  <input
+                    [(ngModel)]="time2"
+                    type="radio"
+                    value="time1"
+                    name="value2"
+                  />
+                  <label for="">1-3 buổi hoặc 1-3h / tuần</label><br />
+                  <input
+                    [(ngModel)]="time2"
+
+                    type="radio"
+                    value="time2"
+
+                  />
+                  <label for="">4-5 buổi hoặc 4-6h / tuần</label><br />
+                  <input
+                    [(ngModel)]="time2"
+                    type="radio"
+                    value="time3"
+                    name="value2"
+                  />
+                  <label for="">6-7 buổi hoặc 7-9h / tuần</label><br />
+                  <input
+                    [(ngModel)]="time2"
+
+                    type="radio"
+                    value="time4"
+                    name="value2"
+                  />
+                  <label for="">Trên 7 buổi hoặc 10h / tuần</label>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  colspan="2"
+                  style="justify-content: center; text-align: center"
+                >
+                  <input
+                    class="btn btn-outline-secondary btn-hover-primary"
+                    (click)="cal2()"
+                    type="button"
+                    value="Tính TDEE"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div
+          class="resultbox"
+          id="result"
+          style="
+            background: #d4efd0;
+            color: #3d8943;
+            font-weight: 700;
+            width: 600px;
+          "
+        >
+          <div style="padding: 15px; text-align: center; font-size: 16px">
+            Kết quả: {{ result2 }}
+          </div>
+        </div>
+      </div>
+      <!-- Tool 2 end -->
+
+      <!-- Blog start -->
+      <div>
+        <h2 id="isPasted">
+          <span style="color: #000000"
+            ><a
+              style="color: #000000"
+              href="https://www.thehinhvip.com/2018/07/tdee-la-gi.html"
+              >TDEE l&agrave; g&igrave; ? C&ocirc;ng cụ t&iacute;nh TDEE online
+              tăng giảm c&acirc;n chuẩn</a
+            ></span
+          >
+        </h2>
+        <p>
+          Đối với nhiều người, th&igrave; việc tăng c&acirc;n hoặc giảm
+          c&acirc;n dường như l&agrave; một mục ti&ecirc;u qu&aacute; kh&oacute;
+          khăn. Cho d&ugrave; c&oacute; tập luyện nhiều giờ đồng hồ mỗi
+          ng&agrave;y hoặc &aacute;p dụng nhiều kiểu ăn ki&ecirc;ng kh&aacute;c
+          nhau, nhưng kết quả của họ vẫn kh&ocirc;ng thể n&agrave;o kh&aacute;
+          hơn.
+        </p>
+        <p>
+          Nguy&ecirc;n nh&acirc;n của điều n&agrave;y c&oacute; thể đến từ rất
+          nhiều yếu tố. Một trong số đ&oacute; c&oacute; thể l&agrave; việc nạp
+          calo kh&ocirc;ng ph&ugrave; hợp với TDEE. Vậy TDEE l&agrave; g&igrave;
+          m&agrave; lại quan trọng như vậy ? Ch&uacute;ng ta cần l&agrave;m
+          g&igrave; để t&iacute;nh được chỉ số TDEE cho nam v&agrave; nữ ?&nbsp;
+        </p>
+        <h2 id="isPasted">TDEE l&agrave; g&igrave; ?</h2>
+        <p>
+          TDEE l&agrave; viết tắt của cụm từ Total Daily Energy Expenditure.
+          Dịch ra c&oacute; nghĩa l&agrave; tổng mức năng lượng ti&ecirc;u hao
+          mỗi ng&agrave;y. Hay n&oacute;i theo một c&aacute;ch dễ hiểu hơn,
+          th&igrave; đ&acirc;y l&agrave; tổng mức năng lượng m&agrave; cơ thể
+          ch&uacute;ng ta sử dụng trong v&ograve;ng 24 giờ.
+        </p>
+        <p style="text-align: center">
+          <img
+            class="fr-fic fr-draggable fr-dib"
+            title="TDEE l&agrave; g&igrave; ? C&ocirc;ng cụ t&iacute;nh TDEE online tăng giảm c&acirc;n chuẩn"
+            src="https://1.bp.blogspot.com/-GSUoMsY4k5A/XnvDtp-kfZI/AAAAAAAACP8/7L5T1_ZXfKIcpSXJ0BhXkQHaon5-YIQQACLcBGAsYHQ/s640/tdee-la-gi.jpg"
+            alt="TDEE l&agrave; g&igrave; ? C&ocirc;ng cụ c&ocirc;ng thức v&agrave; c&aacute;ch t&iacute;nh chỉ số TDEE"
+            width="640"
+            height="426"
+            border="0"
+          />
+        </p>
+        <p>
+          Mỗi một ng&agrave;y, cơ thể của bạn cần ti&ecirc;u hao một mức năng
+          lượng nhất định để phục vụ cho nhiều mục đ&iacute;ch kh&aacute;c nhau.
+          V&iacute; dụ như duy tr&igrave; sự sống, hoạt động đi lại, l&agrave;m
+          việc, học tập.
+        </p>
+        <p>
+          L&uacute;c n&agrave;y, con số tổng của tất cả c&aacute;c nguồn năng
+          lượng ti&ecirc;u hao kể tr&ecirc;n ch&iacute;nh l&agrave; TDEE. Chỉ số
+          TDEE được biểu thị bằng đơn vị calo. V&iacute; dụ, với một người
+          c&oacute; chỉ số TDEE = 2000 (calo)...
+        </p>
+        <p>
+          Th&igrave; điều n&agrave;y c&oacute; nghĩa l&agrave; người đ&oacute;
+          đang ti&ecirc;u hao khoảng 2000 calo mỗi ng&agrave;y.&nbsp;&nbsp;
+        </p>
+        <p>
+          Quay lại chủ đề ch&iacute;nh, khi dựa v&agrave;o chỉ số TDEE,
+          ch&uacute;ng ta sẽ dễ d&agrave;ng biết được n&ecirc;n điều chỉnh /
+          tăng hoặc giảm bao nhi&ecirc;u calo mỗi ng&agrave;y để c&oacute;
+          thể&nbsp;<a
+            id="isPasted"
+            href="https://www.thehinhvip.com/2020/07/cutting-la-gi.html"
+            target="_blank"
+            >cutting</a
+          >&nbsp;hoặc bulking hiệu quả.&nbsp;
+        </p>
+        <p>
+          Th&ocirc;ng thường TDEE sẽ được x&aacute;c định chủ yếu dựa tr&ecirc;n
+          BMR. Tuy nhi&ecirc;n, ngo&agrave;i BMR th&igrave; chỉ số TDEE
+          c&ograve;n được tạo th&agrave;nh (hợp th&agrave;nh) từ nhiều nguồn
+          năng lượng ti&ecirc;u hao kh&aacute;c nhau.
+        </p>
+        <p>
+          Đồng thời, ch&uacute;ng c&ograve;n bị phụ thuộc v&agrave;o kh&aacute;
+          nhiều yếu tố t&aacute;c động. Ch&iacute;nh v&igrave; c&aacute;c
+          l&yacute; do kể tr&ecirc;n, n&ecirc;n chỉ số TDEE sẽ c&oacute; sự
+          ch&ecirc;nh lệch / kh&aacute;c biệt rất lớn giữa c&aacute;c c&aacute;
+          thể. Chứ ch&uacute;ng kh&ocirc;ng c&oacute; gi&aacute; trị giống nhau
+          trong mọi trường hợp.
+        </p>
+        <p>
+          Mặt kh&aacute;c, như đ&atilde; đề cập b&ecirc;n tr&ecirc;n, TDEE
+          l&agrave; mức năng lượng ti&ecirc;u hao "mỗi ng&agrave;y". Vậy, liệu
+          chỉ số n&agrave;y c&oacute; thay đổi theo từng ng&agrave;y hay
+          kh&ocirc;ng? C&acirc;u trả lời l&agrave; c&oacute;. Do chịu sự cho
+          phối đến từ nhiều yếu tố...
+        </p>
+        <p>
+          Thế n&ecirc;n tất cả c&aacute;c hoạt động trong ng&agrave;y của bạn
+          đều sẽ g&acirc;y ảnh hưởng đến chỉ số TDEE. Tuy nhi&ecirc;n, bạn
+          kh&ocirc;ng cần phải lo lắng về điều n&agrave;y. Bởi v&igrave;,
+          c&aacute;c c&ocirc;ng thức hay c&ocirc;ng cụ t&iacute;nh TDEE đều trả
+          về gi&aacute; trị TDEE trung b&igrave;nh của nhiều ng&agrave;y...
+        </p>
+        <p>
+          Chứ ch&uacute;ng kh&ocirc;ng phải l&agrave; mức năng lượng ti&ecirc;u
+          hao cụ thể của từng ng&agrave;y. Tr&ecirc;n thực tế, nếu một người
+          n&agrave;o đ&oacute; đề cập đến kh&aacute;i niệm TDEE, th&igrave; điều
+          n&agrave;y c&oacute; nghĩa l&agrave; họ đang muốn đề cập đến ngưỡng
+          gi&aacute; trị trung b&igrave;nh của ch&uacute;ng.
+        </p>
+        <p>
+          Do đ&oacute;, thay v&igrave; li&ecirc;n tục t&iacute;nh TDEE mỗi
+          ng&agrave;y, th&igrave; bạn chỉ cần t&iacute;nh lại chỉ số mới sau từ
+          1-2 tuần. Nếu bạn c&oacute; sử dụng c&ocirc;ng cụ t&iacute;nh,
+          th&igrave; việc đếm calo ti&ecirc;u hao của từng bước ch&acirc;n hay
+          sự ch&ecirc;nh lệch calo của c&aacute;c ng&agrave;y tập / ng&agrave;y
+          nghỉ l&agrave; kh&ocirc;ng cần thiết.
+        </p>
+        <p>&nbsp;</p>
+        <h3>TDEE c&oacute; phải l&agrave; lượng calo cần ăn ?</h3>
+        <p>
+          Tr&ecirc;n internet, c&oacute; rất nhiều trang web định nghĩa rằng:
+          TDEE l&agrave; "tổng số năng lượng cần thiết trong một ng&agrave;y"
+          hoặc l&agrave; "năng lượng m&agrave; bạn cần d&ugrave;ng trong một
+          ng&agrave;y". Tuy nhi&ecirc;n, c&aacute;c định nghĩa n&agrave;y đều
+          l&agrave; những th&ocirc;ng tin kh&ocirc;ng ch&iacute;nh x&aacute;c.
+        </p>
+        <p>
+          Mục đ&iacute;ch của chỉ số TDEE l&agrave; gi&uacute;p ch&uacute;ng ta
+          x&aacute;c định được lượng calo m&agrave; cơ thể đang đốt ch&aacute;y
+          (ti&ecirc;u hao) mỗi ng&agrave;y với một tuần suất hoạt động
+          n&agrave;o đ&oacute;. Chứ ch&uacute;ng kh&ocirc;ng phải l&agrave; mức
+          calo m&agrave; bạn cần ăn.
+        </p>
+        <p>
+          Bản th&acirc;n kh&aacute;i niệm TDEE đ&atilde; thể hiện qu&aacute;
+          r&otilde; &yacute; nghĩa của ch&uacute;ng. Trong tiếng Anh,
+          "expenditure" c&oacute; nghĩa l&agrave; sự ti&ecirc;u x&agrave;i,
+          ti&ecirc;u hao. Chứ "expenditure" kh&ocirc;ng c&oacute; nghĩa
+          l&agrave; "cần thiết" hay "cần d&ugrave;ng" như lời của c&aacute;c
+          "chi&ecirc;n da fitness" kia.
+        </p>
+        <p>
+          V&iacute; dụ, giả sử bạn l&agrave; một người b&eacute;o ph&igrave;
+          v&agrave; c&oacute; TDEE l&agrave; 4000 calo. Khi đ&oacute; PT cho bạn
+          ăn 3000 calo một ng&agrave;y để giảm c&acirc;n. Như vậy, trong trường
+          hợp n&agrave;y, th&igrave; TDEE kh&ocirc;ng thể n&agrave;o l&agrave;
+          lượng calo m&agrave; bạn "cần d&ugrave;ng" được.
+        </p>
+        <p>
+          Th&ocirc;ng thường, BMR sẽ l&agrave; nguồn năng lượng lớn nhất
+          m&agrave; cơ thể ch&uacute;ng ta sử dụng trong một ng&agrave;y.<br
+            id="isPasted"
+          /><br />Theo&nbsp;<a
+            href="https://pubmed.ncbi.nlm.nih.gov/24571926/"
+            target="_blank"
+            rel="nofollow noopener"
+            >nghi&ecirc;n cứu</a
+          >&nbsp;của trường University of North Carolina (USA), BMR thường chiếm
+          khoảng từ 60-70% trong tổng mức năng lượng của TDEE. Ngo&agrave;i BMR,
+          th&agrave;nh phần thứ 2 cấu tạo n&ecirc;n TDEE l&agrave; TEF.<br /><br />TEF
+          l&agrave; chữ viết tắt của cụm từ Thermic Effect of Food. Ch&uacute;ng
+          l&agrave; mức năng lượng m&agrave; cơ thể d&ugrave;ng để ti&ecirc;u
+          h&oacute;a, hấp thụ v&agrave; dự trữ c&aacute;c chất dinh dưỡng từ
+          c&aacute;c loại thực phẩm m&agrave; ch&uacute;ng ta nạp v&agrave;o.<br /><br />TEF
+          thường&nbsp;<a
+            href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3673773/"
+            target="_blank"
+            rel="nofollow noopener"
+            >chiếm khoảng</a
+          >&nbsp;từ 10-15% trong tổng mức năng lượng của TDEE. Cuối c&ugrave;ng,
+          th&agrave;nh phần năng lượng c&ograve;n lại trong TDEE ch&iacute;nh
+          l&agrave; TEA. TEA l&agrave; chữ viết tắt của cụm từ Thermic Effect of
+          Activity.<br /><br />TEA dịch ra c&oacute; nghĩa l&agrave; hiệu ứng
+          nhiệt của c&aacute;c hoạt động thể chất. Ch&uacute;ng thường&nbsp;<a
+            href="https://pubmed.ncbi.nlm.nih.gov/2691813/"
+            target="_blank"
+            rel="nofollow noopener"
+            >chiếm khoảng</a
+          >&nbsp;từ 15-30% trong tổng mức TDEE. Đ&ocirc;i khi TEA c&ograve;n
+          được gọi l&agrave; PAL (Physical Activity Level).<br /><br />Tuy
+          nhi&ecirc;n, để kh&ocirc;ng bị nhầm lẫn với hệ số vận động PAL,
+          th&igrave; ch&uacute;ng ta n&ecirc;n sử dụng kh&aacute;i niệm TEA thay
+          v&igrave; PAL. Trong nguồn năng lượng TEA, ch&uacute;ng lại được chia
+          th&agrave;nh 2 nh&oacute;m năng lượng nữa, đ&oacute; l&agrave; EAT
+          v&agrave; NEAT.<br /><br />EAT l&agrave; chữ viết tắt của cụm từ
+          Exercise Activity Thermogenesis. EAT l&agrave; mức năng lượng
+          ti&ecirc;u hao do sự sinh nhiệt đến từ c&aacute;c hoạt động tập luyện.
+          N&oacute;i c&aacute;ch kh&aacute;c, EAT đề cập đến...<br /><br />Mức
+          năng lượng m&agrave; cơ thể ti&ecirc;u hao khi ch&uacute;ng ta tập
+          luyện thể thao, vận động mạnh. Mặt kh&aacute;c, đối với NEAT
+          th&igrave; ch&uacute;ng l&agrave; chữ viết tắt của cụm từ Non-Exercise
+          Activity Thermogenesis.<br /><br />Tương tự như chỉ số EAT, NEAT cũng
+          l&agrave; mức năng lượng m&agrave; cơ thể ti&ecirc;u hao để phục vụ
+          cho c&aacute;c hoạt động thể chất. Tuy nhi&ecirc;n, ch&uacute;ng chỉ
+          l&agrave; những hoạt động nhẹ nh&agrave;ng v&agrave; kh&ocirc;ng được
+          xếp v&agrave;o nh&oacute;m tập luyện thể thao, vận động mạnh.<br /><br />Một
+          số dạng vận động của NEAT c&oacute; thể kể đến như: bồn chồn, lo lắng,
+          duy tr&igrave; tư thế, đứng, ngồi, c&aacute;c hoạt động sinh hoạt hằng
+          ng&agrave;y như dọn dẹp, nấu ăn, đi bộ trong nh&agrave;.&nbsp;
+        </p>
+        <p>
+          Bởi v&igrave; nếu ăn 4000 calo theo chỉ số TDEE th&igrave; bạn sẽ bị
+          "dư thừa" 1000 calo so với nhu cầu giảm c&acirc;n. Tr&ecirc;n
+          internet, hầu hết c&aacute;c trang web đều đưa ra định nghĩa sai lệnh
+          về kh&aacute;i niệm TDEE.
+        </p>
+        <p>
+          Do kh&ocirc;ng c&oacute; kiến thức n&ecirc;n c&aacute;c trang web mới
+          thường copy 100% kh&aacute;i niệm sai lệch của nhau. Thế n&ecirc;n,
+          bạn h&atilde;y thận trọng khi tham khảo kiến thức từ c&aacute;c trang
+          cung cấp th&ocirc;ng tin sai lệch n&agrave;y.
+        </p>
+        <p>&nbsp;</p>
+        <h2>TDEE gồm những th&agrave;nh phần yếu tố n&agrave;o ?</h2>
+        <p>
+          Như đ&atilde; đề cập b&ecirc;n tr&ecirc;n, TDEE được tạo th&agrave;nh
+          từ nhiều nguồn năng lượng ti&ecirc;u hao kh&aacute;c nhau. C&aacute;c
+          nguồn năng lượng n&agrave;y bao gồm: BMR, TEF v&agrave; PAL. Đối với
+          BMR, th&igrave; đ&acirc;y l&agrave; mức năng lượng m&agrave; cơ thể
+          ti&ecirc;u hao để duy tr&igrave; sự sống.
+        </p>
+        <p>
+          Th&ocirc;ng thường, BMR sẽ l&agrave; nguồn năng lượng lớn nhất
+          m&agrave; cơ thể ch&uacute;ng ta sử dụng trong một ng&agrave;y.<br /><br />Theo&nbsp;<a
+            href="https://pubmed.ncbi.nlm.nih.gov/24571926/"
+            target="_blank"
+            rel="nofollow noopener"
+            >nghi&ecirc;n cứu</a
+          >&nbsp;của trường University of North Carolina (USA), BMR thường chiếm
+          khoảng từ 60-70% trong tổng mức năng lượng của TDEE. Ngo&agrave;i BMR,
+          th&agrave;nh phần thứ 2 cấu tạo n&ecirc;n TDEE l&agrave; TEF.<br /><br />TEF
+          l&agrave; chữ viết tắt của cụm từ Thermic Effect of Food. Ch&uacute;ng
+          l&agrave; mức năng lượng m&agrave; cơ thể d&ugrave;ng để ti&ecirc;u
+          h&oacute;a, hấp thụ v&agrave; dự trữ c&aacute;c chất dinh dưỡng từ
+          c&aacute;c loại thực phẩm m&agrave; ch&uacute;ng ta nạp v&agrave;o.<br /><br />TEF
+          thường&nbsp;<a
+            href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3673773/"
+            target="_blank"
+            rel="nofollow noopener"
+            >chiếm khoảng</a
+          >&nbsp;từ 10-15% trong tổng mức năng lượng của TDEE. Cuối c&ugrave;ng,
+          th&agrave;nh phần năng lượng c&ograve;n lại trong TDEE ch&iacute;nh
+          l&agrave; TEA. TEA l&agrave; chữ viết tắt của cụm từ Thermic Effect of
+          Activity.<br /><br />TEA dịch ra c&oacute; nghĩa l&agrave; hiệu ứng
+          nhiệt của c&aacute;c hoạt động thể chất. Ch&uacute;ng thường&nbsp;<a
+            href="https://pubmed.ncbi.nlm.nih.gov/2691813/"
+            target="_blank"
+            rel="nofollow noopener"
+            >chiếm khoảng</a
+          >&nbsp;từ 15-30% trong tổng mức TDEE. Đ&ocirc;i khi TEA c&ograve;n
+          được gọi l&agrave; PAL (Physical Activity Level).<br /><br />Tuy
+          nhi&ecirc;n, để kh&ocirc;ng bị nhầm lẫn với hệ số vận động PAL,
+          th&igrave; ch&uacute;ng ta n&ecirc;n sử dụng kh&aacute;i niệm TEA thay
+          v&igrave; PAL. Trong nguồn năng lượng TEA, ch&uacute;ng lại được chia
+          th&agrave;nh 2 nh&oacute;m năng lượng nữa, đ&oacute; l&agrave; EAT
+          v&agrave; NEAT.<br /><br />EAT l&agrave; chữ viết tắt của cụm từ
+          Exercise Activity Thermogenesis. EAT l&agrave; mức năng lượng
+          ti&ecirc;u hao do sự sinh nhiệt đến từ c&aacute;c hoạt động tập luyện.
+          N&oacute;i c&aacute;ch kh&aacute;c, EAT đề cập đến...<br /><br />Mức
+          năng lượng m&agrave; cơ thể ti&ecirc;u hao khi ch&uacute;ng ta tập
+          luyện thể thao, vận động mạnh. Mặt kh&aacute;c, đối với NEAT
+          th&igrave; ch&uacute;ng l&agrave; chữ viết tắt của cụm từ Non-Exercise
+          Activity Thermogenesis.<br /><br />Tương tự như chỉ số EAT, NEAT cũng
+          l&agrave; mức năng lượng m&agrave; cơ thể ti&ecirc;u hao để phục vụ
+          cho c&aacute;c hoạt động thể chất. Tuy nhi&ecirc;n, ch&uacute;ng chỉ
+          l&agrave; những hoạt động nhẹ nh&agrave;ng v&agrave; kh&ocirc;ng được
+          xếp v&agrave;o nh&oacute;m tập luyện thể thao, vận động mạnh.<br /><br />Một
+          số dạng vận động của NEAT c&oacute; thể kể đến như: bồn chồn, lo lắng,
+          duy tr&igrave; tư thế, đứng, ngồi, c&aacute;c hoạt động sinh hoạt hằng
+          ng&agrave;y như dọn dẹp, nấu ăn, đi bộ trong nh&agrave;.<br /><br />
+        </p>
+        <blockquote>
+          <ul>
+            <li>BMR: 60 - 70%</li>
+            <li>TEF: 10 - 15%</li>
+            <li>TEA (NEAT + EAT): 15 - 30%</li>
+          </ul>
+        </blockquote>
+        <p>
+          <br />N&oacute;i t&oacute;m lại, TDEE bao gồm c&aacute;c loại năng
+          lượng sau: BMR chiếm 70%, TEF chiếm 10% v&agrave; TEA (EAT v&agrave;
+          NEAT) chiếm 20%. Trong đ&oacute;, EAT sẽ chiếm khoảng 5% v&agrave;
+          NEAT chiếm khoảng 15%.<br /><br />Ngo&agrave;i ra, nếu ch&uacute;ng ta
+          sử dụng trạng th&aacute;i nghỉ ngơi để ph&acirc;n loại, th&igrave;
+          TDEE sẽ bao gồm REE v&agrave; NREE. Trong đ&oacute;, REE l&agrave; một
+          c&aacute;ch gọi kh&aacute;c của BMR. REE l&agrave; viết tắt của
+          Resting Energy Expenditure, tức l&agrave; năng lượng ti&ecirc;u hao
+          khi nghỉ ngơi.<br /><br />C&ograve;n đối với NREE th&igrave;
+          ch&uacute;ng l&agrave; tổng của 3 chỉ số TEF, EAT v&agrave; NEAT. NREE
+          l&agrave; chữ viết tắt của Non-Resting Energy Expenditure, tức
+          l&agrave; mức năng lượng ti&ecirc;u hao khi kh&ocirc;ng nghỉ ngơi (khi
+          ti&ecirc;u h&oacute;a hoặc vận động thể chất).<br /><br />
+        </p>
+        <h2>TDEE v&agrave; BMR c&oacute; kh&aacute;c nhau kh&ocirc;ng ?</h2>
+        <p>
+          <br />Nếu đ&atilde; đọc kỹ phần nội dung ngay b&ecirc;n tr&ecirc;n,
+          th&igrave; chắn hẳn bạn cũng đ&atilde; biết được c&acirc;u trả lời.
+          V&agrave; để khẳng định lại một lần nữa th&igrave; c&acirc;u trả lời
+          l&agrave; c&oacute;. Trong đ&oacute;, TDEE v&agrave; BMR l&agrave; 2
+          chỉ số kh&aacute;c nhau.<br /><br />Chứ ch&uacute;ng kh&ocirc;ng phải
+          l&agrave; một. Hiểu một c&aacute;ch đơn giản, th&igrave; TDEE
+          l&agrave; một tập hợp bao gồm nhiều đại lượng (nguồn năng lượng
+          ti&ecirc;u hao), trong đ&oacute; c&oacute; BMR. L&uacute;c n&agrave;y,
+          BMR l&agrave; một phần tử thuộc tập hợp TDEE.<br /><br />
+        </p>
+        <h2>T&aacute;c dụng &yacute; nghĩa của chỉ số TDEE</h2>
+        <p>
+          Nếu bạn l&agrave; một người đang tập gym hoặc đang muốn thay đổi ngoại
+          h&igrave;nh, th&igrave; việc nắm bắt được chỉ số TDEE l&agrave; một
+          điều kh&aacute; quan trọng. Bởi v&igrave; khi dựa v&agrave;o TDEE, bạn
+          sẽ c&oacute; thể ước t&iacute;nh được lượng calo cần thiết...<br /><br />Để
+          đ&aacute;p ứng cho c&aacute;c nhu cầu của bản th&acirc;n (tăng cơ hoặc
+          giảm mỡ). Hay n&oacute;i theo một c&aacute;ch kh&aacute;c, th&igrave;
+          TDEE sẽ hỗ trợ bạn thiết lập được một kế hoạch ăn uống khoa học
+          v&agrave; chi tiết hơn.<br />Khi đ&oacute;, lộ tr&igrave;nh tập luyện
+          / thay đổi ngoại h&igrave;nh của bạn sẽ được hiện ra r&otilde;
+          r&agrave;ng dưới dạng c&aacute;c con số. Chứ kh&ocirc;ng phải phụ
+          thuộc v&agrave;o một chế độ ăn ki&ecirc;ng kỳ lạ n&agrave;o đ&oacute;
+          hoặc phỏng đo&aacute;n lượng thức ăn nạp v&agrave;o một c&aacute;ch mơ
+          hồ.<br /><br />
+        </p>
+        <blockquote>
+          <ul>
+            <li>Gi&uacute;p t&iacute;nh to&aacute;n lượng calo cần nạp</li>
+            <li>Hỗ trợ x&aacute;c định ph&acirc;n chia macro</li>
+          </ul>
+        </blockquote>
+        <p>
+          <br />Kh&ocirc;ng chỉ dừng lại ở đ&oacute;, khi nắm được TDEE của bản
+          th&acirc;n, chỉ số n&agrave;y sẽ gi&uacute;p bạn t&iacute;nh
+          to&aacute;n được macro một c&aacute;ch khoa học hơn. Điều m&agrave;
+          bạn sẽ kh&ocirc;ng thể l&agrave;m được nếu chỉ ước lượng một
+          c&aacute;ch cảm t&iacute;nh.<br /><br />Mặc d&ugrave; việc đếm macro
+          sẽ kh&aacute; ti&ecirc;u cực nếu bạn t&iacute;nh to&aacute;n
+          qu&aacute; lố / th&aacute;i qu&aacute; (t&iacute;nh to&aacute;n từng
+          c&acirc;y kem, từng ly nước, từng miếng thịt). Tuy nhi&ecirc;n, nếu
+          được sử dụng một c&aacute;ch hợp l&yacute; dựa tr&ecirc;n TDEE,
+          th&igrave; ch&uacute;ng sẽ l&agrave; một c&ocirc;ng cụ rất hữu
+          &iacute;ch.<br /><br />
+        </p>
+        <h2>C&aacute;ch t&iacute;nh TDEE như thế n&agrave;o chuẩn nhất ?</h2>
+        <p>
+          Ở c&aacute;c phần nội dung b&ecirc;n tr&ecirc;n, ch&uacute;ng
+          đ&atilde; t&igrave;m hiểu về kh&aacute;i niệm TDEE l&agrave; g&igrave;
+          cũng như lợi &iacute;ch, &yacute; nghĩa của ch&uacute;ng. Vậy
+          b&acirc;y giờ, để t&iacute;nh được chỉ số TDEE th&igrave; ch&uacute;ng
+          ta cần phải thực hiện như thế n&agrave;o?<br /><br />Để t&iacute;nh
+          chỉ số TDEE, bạn c&oacute; thể sử dụng 1 trong 2 c&aacute;ch.
+          Đ&oacute; l&agrave; t&iacute;nh to&aacute;n th&ocirc;ng qua hệ số vận
+          động v&agrave; t&iacute;nh to&aacute;n th&ocirc;ng qua tổng c&aacute;c
+          nguồn calo ti&ecirc;u hao. Ở c&aacute;ch thứ nhất, ch&uacute;ng ta sẽ
+          nh&acirc;n chỉ số BMR với c&aacute;c hệ số vận động để ước t&iacute;nh
+          TDEE.<br /><br />Mỗi một hệ số vận động sẽ tương ứng với một mức độ
+          hoạt động thể chất kh&aacute;c nhau. Trong đ&oacute;, khi ch&uacute;ng
+          ta hoạt động c&agrave;ng nhiều, th&igrave; hệ số vận động tương ứng sẽ
+          c&agrave;ng cao.
+        </p>
+        <blockquote>
+          <ul>
+            <li>C&aacute;ch t&iacute;nh TDEE th&ocirc;ng qua hệ số vận động</li>
+            <li>C&aacute;ch t&iacute;nh TDEE bằng tổng calo ti&ecirc;u hao</li>
+            <li>
+              C&aacute;ch t&iacute;nh TDEE bằng c&ocirc;ng cụ của Thể
+              H&igrave;nh Vip
+            </li>
+          </ul>
+        </blockquote>
+        <p>
+          Mặt kh&aacute;c, đối với c&aacute;ch t&iacute;nh TDEE bằng tổng calo
+          ti&ecirc;u hao, th&igrave; ch&uacute;ng ta sẽ cần cộng thủ c&ocirc;ng
+          từng nguồn calo lại với nhau. Nếu bạn x&aacute;c định được
+          ch&iacute;nh x&aacute;c c&aacute;c nguồn calo ti&ecirc;u hao,
+          th&igrave; đ&acirc;y sẽ một c&aacute;ch t&iacute;nh rất đ&aacute;ng
+          tin cậy.<br /><br />Tuy nhi&ecirc;n, c&aacute;ch t&iacute;nh
+          n&agrave;y lại c&oacute; một nhược điểm v&ocirc; c&ugrave;ng
+          "ch&iacute; mạng". Đ&oacute; l&agrave; khi sử dụng ch&uacute;ng, bạn
+          sẽ phải t&iacute;nh TDEE cho cả những ng&agrave;y c&oacute; tập gym
+          (vận động mạnh, nhiều) v&agrave; những ng&agrave;y kh&ocirc;ng tập
+          gym.<br /><br />Ngo&agrave;i ra, khi t&iacute;nh TDEE bằng tổng calo
+          ti&ecirc;u hao, ch&uacute;ng ta sẽ cần t&iacute;nh to&aacute;n
+          to&aacute;n v&agrave; ước t&iacute;nh nhiều nguồn calo kh&aacute;c
+          nhau. Từ đ&oacute;, khiến ch&uacute;ng trở th&agrave;nh một phương
+          ph&aacute;p kh&aacute; bất tiện v&agrave; ti&ecirc;u tốn nhiều thời
+          gian.<br /><br />Trong trường hợp vẫn muốn sử dụng dụng c&aacute;ch
+          t&iacute;nh n&agrave;y, th&igrave; bạn n&ecirc;n t&igrave;m ra mức
+          TDEE trung b&igrave;nh giữa c&aacute;c ng&agrave;y c&oacute; tập
+          v&agrave; kh&ocirc;ng tập gym (v&agrave; &aacute;p dụng ch&uacute;ng).
+          Chứ kh&ocirc;ng cần phải li&ecirc;n tục t&iacute;nh to&aacute;n TDEE
+          mỗi ng&agrave;y.<br /><br />
+        </p>
+        <h2>C&ocirc;ng thức t&iacute;nh chỉ số TDEE cho nam v&agrave; nữ</h2>
+        <p>
+          <br />Từ c&aacute;c c&aacute;ch t&iacute;nh TDEE b&ecirc;n tr&ecirc;n,
+          ch&uacute;ng ta sẽ c&oacute; những c&ocirc;ng thức t&iacute;nh tương
+          ứng d&agrave;ng cho ch&uacute;ng. Cụ thể th&igrave; c&aacute;c
+          c&ocirc;ng thức n&agrave;y l&agrave;: c&ocirc;ng thức t&iacute;nh TDEE
+          th&ocirc;ng qua hệ số vận động v&agrave; c&ocirc;ng thức t&iacute;nh
+          TDEE bằng tổng calo ti&ecirc;u hao.<br /><br />
+        </p>
+        <blockquote>
+          <ul>
+            <li>
+              C&ocirc;ng thức t&iacute;nh TDEE th&ocirc;ng qua hệ số vận động
+            </li>
+            <li>
+              C&ocirc;ng thức t&iacute;nh TDEE bằng tổng calo ti&ecirc;u hao
+            </li>
+          </ul>
+        </blockquote>
+        <p>
+          <br />Thể H&igrave;nh Vip sẽ cung cấp cho bạn c&aacute;c c&ocirc;ng
+          thức n&agrave;y trong c&aacute;c phần nội dung ngay b&ecirc;n dưới.
+          Lưu &yacute;, ngo&agrave;i c&aacute;c c&ocirc;ng thức m&agrave; Thể
+          H&igrave;nh Vip đề cập, th&igrave; rất nhiều trang web kh&aacute;c
+          tr&ecirc;n internet...<br /><br />Sẽ cung cấp cho bạn c&aacute;c
+          c&ocirc;ng thức với một chuỗi k&yacute; tự d&agrave;i thăm thẳm,
+          v&agrave; ph&acirc;n chia ra th&agrave;nh c&ocirc;ng thức t&iacute;nh
+          TDEE cho nam v&agrave; c&ocirc;ng thức t&iacute;nh cho nữ. Tuy
+          nhi&ecirc;n, những c&ocirc;ng thức n&agrave;y kh&ocirc;ng phải
+          l&agrave; c&ocirc;ng thức t&iacute;nh TDEE.<br /><br />M&agrave; thay
+          v&agrave;o đ&oacute;, hầu hết c&aacute;c c&ocirc;ng thức d&agrave;i
+          d&ograve;ng kia l&agrave; c&aacute;c c&ocirc;ng thức t&iacute;nh BMR.
+          Những "chi&ecirc;n da fitness" kia hoặc l&agrave; đang xỏ mũi, dắt mũi
+          bạn (đ&aacute;nh tr&aacute;o kh&aacute;i niệm), hoặc l&agrave;
+          kh&ocirc;ng c&oacute; kiến thức n&ecirc;n đ&atilde; bịa đặt bừa nội
+          dung để c&acirc;u view.<br /><br />Do đ&oacute;, bạn n&ecirc;n thận
+          trọng khi tham khảo kiến thức sai lệch của c&aacute;c "chi&ecirc;n da"
+          n&agrave;y. Ngo&agrave;i ra, một khi đ&atilde; x&aacute;c định được
+          BMR để sử dụng, th&igrave; c&ocirc;ng thức t&iacute;nh TDEE sẽ được
+          &aacute;p dụng chung, chứ kh&ocirc;ng ph&acirc;n biệt nam hay nữ.<br /><br />
+        </p>
+        <h3>C&ocirc;ng thức t&iacute;nh TDEE th&ocirc;ng qua hệ số vận động</h3>
+        <p>
+          <br />Đối với c&ocirc;ng thức t&iacute;nh TDEE th&ocirc;ng qua hệ số
+          vận động, th&igrave; TDEE sẽ bằng chỉ số BMR nh&acirc;n với hệ số vận
+          động. Nếu chưa biết chỉ số BMR của m&igrave;nh, th&igrave; bạn
+          h&atilde;y sự dụng c&ocirc;ng cụ t&iacute;nh BMR của Thể H&igrave;nh
+          Vip (đ&atilde; đề cập b&ecirc;n tr&ecirc;n).<br /><br />Hệ số vận động
+          của c&ocirc;ng thức n&agrave;y kh&ocirc;ng c&oacute; một t&ecirc;n gọi
+          cụ thể n&agrave;o. Mặc d&ugrave; một số nguồn t&agrave;i liệu gọi hệ
+          số vận động l&agrave; "hệ số nh&acirc;n Katch-McArdle". Tuy
+          nhi&ecirc;n, c&aacute;ch gọi n&agrave;y lại chưa được sử dụng trong
+          c&aacute;c nghi&ecirc;n cứu khoa học.<br /><br />Thế n&ecirc;n, Thể
+          H&igrave;nh Vip sẽ đặt t&ecirc;n cho ch&uacute;ng l&agrave; hệ số P để
+          thuận tiện trong việc sử dụng (ngắn gọn hơn). Chữ P n&agrave;y sẽ đại
+          diện cho cụm từ "physical activity", c&oacute; nghĩa l&agrave; hoạt
+          động thể chất.
+        </p>
+        <blockquote><strong>TDEE = BMR x P</strong></blockquote>
+        <p>
+          Như đ&atilde; đề cập b&ecirc;n tr&ecirc;n, hệ số P n&agrave;y
+          ch&iacute;nh l&agrave; hệ số thể hiện mức độ hoạt động thể chất của
+          bạn trong 1 tuần. Khi bạn tập luyện c&agrave;ng nhiều, tần suất
+          c&agrave;ng d&agrave;y đặc th&igrave; hệ số n&agrave;y sẽ c&agrave;ng
+          cao.<br /><br />Trong đ&oacute;, nếu bạn l&agrave; nh&acirc;n
+          vi&ecirc;n văn ph&ograve;ng chỉ l&agrave;m c&ocirc;ng việc b&agrave;n
+          giấy, &iacute;t vận động hoặc kh&ocirc;ng tập luyện, th&igrave; hệ số
+          vận động sẽ l&agrave; 1,2. Mặt kh&aacute;c, nếu bạn vận động nhẹ (tập
+          gym ở mức độ nhẹ) từ 1-3 buổi 1 tuần (1-3 giờ / tuần)...<br /><br />Th&igrave;
+          hệ số vận động sẽ l&agrave; 1,375. Trong trường hợp bạn vận động vừa
+          phải từ 4-5 buổi 1 tuần (4-6 giờ / tuần), th&igrave; hệ số vận động sẽ
+          l&agrave; 1,55. Nếu bạn vận động t&iacute;ch cực (tập nặng) từ 6-7
+          buổi 1 tuần (7-9 giờ / tuần), th&igrave; hệ số vận động sẽ l&agrave;
+          1,725.
+        </p>
+        <blockquote>
+          <ul>
+            <li>&Iacute;t vận động / kh&ocirc;ng tập luyện: P = 1,2</li>
+            <li>Tập nhẹ, 1-3 buổi 1 tuần: P = 1,375</li>
+            <li>Tập vừa phải, 4-5 buổi 1 tuần: P = 1,55</li>
+            <li>Tập nặng, 6-7 buổi 1 tuần: P = 1,725</li>
+            <li>Tập rất nặng, tr&ecirc;n 7 buổi 1 tuần: P = 1,9</li>
+          </ul>
+        </blockquote>
+        <p>
+          Với những người vận động rất t&iacute;ch cực (tập rất nặng) tr&ecirc;n
+          7 buổi 1 tuần (tr&ecirc;n 10 giờ / tuần), đồng thời c&oacute;
+          c&ocirc;ng việc hoạt động thể chất / lao động ch&acirc;n tay,
+          th&igrave; hệ số vận động khi đ&oacute; sẽ l&agrave; 1,9.
+        </p>
+        <p>
+          <br />V&iacute; dụ, với một người đ&agrave;n &ocirc;ng cao 1m7, nặng
+          70 kg th&igrave; BMR của anh ta sẽ rơi v&agrave;o khoảng 1658 calo.
+          B&acirc;y giờ, nếu người n&agrave;y tập luyện với tần suất trung
+          b&igrave;nh (vừa phải) 4-5 buổi mỗi tuần th&igrave; TDEE của anh ta sẽ
+          l&agrave; 1658 x 1,55 = 2569 calo.<br /><br />Một số người cho rằng,
+          phương ph&aacute;p nh&acirc;n hệ số n&agrave;y l&agrave; kh&ocirc;ng
+          ch&iacute;nh x&aacute;c. Bởi v&igrave; theo họ, c&aacute;c hệ số
+          n&agrave;y kh&ocirc;ng đề cập đến cường độ nặng/nhẹ v&agrave; độ
+          d&agrave;i của c&aacute;c buổi tập. Điều n&agrave;y nghe c&oacute; vẻ
+          kh&aacute; hợp l&yacute;.<br /><br />Tuy nhi&ecirc;n, đ&atilde;
+          c&oacute; rất nhiều người &aacute;p dụng c&ocirc;ng thức n&agrave;y
+          v&agrave; đạt được những kết quả t&iacute;ch cực. Do đ&oacute;, bạn
+          ho&agrave;n to&agrave;n c&oacute; thể thay đổi ngoại h&igrave;nh hiệu
+          quả với c&ocirc;ng thức t&iacute;nh TDEE th&ocirc;ng qua hệ số.<br /><br />So
+          với việc đo&aacute;n đại một con số v&ocirc; chừng n&agrave;o
+          đ&oacute;, th&igrave; phương ph&aacute;p n&agrave;y vẫn l&agrave; sự
+          một lựa chọn tốt hơn rất nhiều. Hơn thế nữa, tất cả c&aacute;c phương
+          ph&aacute;p t&iacute;nh TDEE đều chỉ l&agrave; c&aacute;c c&ocirc;ng
+          thức ước lượng v&agrave; ch&uacute;ng đều sẽ c&oacute; sai số.<br /><br />Cho
+          d&ugrave; bạn c&oacute; đếm calo kỹ đến đ&acirc;u, th&igrave; chỉ số
+          TDEE thu được cũng kh&ocirc;ng thể n&agrave;o ch&iacute;nh x&aacute;c
+          tuyệt đối 100%. Thế n&ecirc;n, điều quan trọng hơn khi t&iacute;nh
+          TDEE, đ&oacute; ch&iacute;nh l&agrave; việc bạn &aacute;p dụng
+          v&agrave; theo d&otilde;i sự thay đổi c&acirc;n nặng để t&igrave;m ra
+          mức TDEE thật sự.<br /><br />
+        </p>
+        <h3>C&ocirc;ng thức t&iacute;nh TDEE bằng tổng calo ti&ecirc;u hao</h3>
+        <p>
+          <br />Đối với c&ocirc;ng thức t&iacute;nh TDEE bằng tổng calo
+          ti&ecirc;u hao, th&igrave; ch&uacute;ng chỉ đơn giản l&agrave; một
+          ph&eacute;p t&iacute;nh tổng của tất cả c&aacute;c nguồn năng lượng
+          m&agrave; bạn đ&atilde; sử dụng trong suốt một ng&agrave;y.
+        </p>
+        <blockquote>
+          <ul>
+            <li>TDEE = BMR + TEF + PAL</li>
+            <li>TDEE = BMR + TEF + TEA</li>
+            <li>TDEE = BMR + TEF + NEAT + EAT</li>
+          </ul>
+        </blockquote>
+        <p>
+          L&uacute;c n&agrave;y chỉ số TDEE sẽ bằng BMR cộng với c&aacute;c chỉ
+          số kh&aacute;c như TEF v&agrave; PAL (TEA). Hoặc nếu chia nhỏ
+          c&aacute;c nguồn calo ti&ecirc;u hao chi tiết hơn nữa, th&igrave; TDEE
+          sẽ bằng BMR cộng với TEF với NEAT v&agrave; EAT.<br /><br />Th&ocirc;ng
+          tin chi tiết về c&aacute;c chỉ số n&agrave;y đ&atilde; được Thể
+          H&igrave;nh Vip đề cập ở đầu b&agrave;i viết. Lưu &yacute;, nếu
+          c&oacute; ai đ&oacute; tuy&ecirc;n bố rằng TDEE = BMR + TEF + NEAT +
+          TEA, th&igrave; đ&acirc;y l&agrave; c&ocirc;ng thức kh&ocirc;ng
+          ch&iacute;nh x&aacute;c. Bởi v&igrave; chỉ số TEA đ&atilde; bao gồm cả
+          NEAT.<br /><br />Thế n&ecirc;n, đ&acirc;y l&agrave; một c&ocirc;ng
+          thức v&ocirc; nghĩa. Quay lại chủ đề ch&iacute;nh, trong trường hợp
+          c&aacute;c chỉ số tr&ecirc;n qu&aacute; rắc rối, th&igrave; bạn chỉ
+          cần ghi nhớ l&agrave; TDEE sẽ bằng BMR cộng với c&aacute;c nguồn năng
+          lượng kh&aacute;c m&agrave; bạn ti&ecirc;u hao trong ng&agrave;y.<br /><br />C&aacute;c
+          nguồn năng lượng ti&ecirc;u hao n&agrave;y sẽ bao gồm: năng lượng
+          (calo ti&ecirc;u hao) phục vụ cho việc tập luyện, tập gym, năng lượng
+          tập cardio, năng lượng để l&agrave;m việc, học tập.<br /><br />V&iacute;
+          dụ, với một người nam giới c&oacute; c&acirc;n nặng 70 kg, th&igrave;
+          BMR của anh ta sẽ rơi v&agrave;o khoảng 1658 calo. B&acirc;y giờ, nếu
+          anh ta tập gym 60 ph&uacute;t với cường độ nhẹ hoặc trung b&igrave;nh,
+          th&igrave; lượng calo ti&ecirc;u hao sẽ được cộng th&ecirc;m khoảng
+          216 calo.
+        </p>
+        <p>
+          Giả sử người n&agrave;y l&agrave; nh&acirc;n vi&ecirc;n văn
+          ph&ograve;ng, chỉ ngồi một chỗ v&agrave; l&agrave;m việc suốt 8 tiếng
+          đồng hồ th&igrave; anh ta sẽ ti&ecirc;u hao th&ecirc;m khoảng 577
+          calo.&nbsp;
+        </p>
+        <p>
+          B&acirc;y giờ, ch&uacute;ng ta h&atilde;y cộng tất cả c&aacute;c nguồn
+          năng lượng ti&ecirc;u hao của người n&agrave;y lại. Khi đ&oacute; chỉ
+          số TDEE của người đ&agrave;n &ocirc;ng nặng 70 kg n&agrave;y sẽ rơi
+          v&agrave;o khoảng: TDEE = 1658 + 216 + 577 = 2451 calo.<br /><br />
+        </p>
+        <h2>
+          C&ocirc;ng cụ t&iacute;nh chỉ số TDEE online ch&iacute;nh x&aacute;c
+        </h2>
+        <p>
+          Để gi&uacute;p cuộc sống của bạn trở n&ecirc;n dễ d&agrave;ng hơn, Thể
+          H&igrave;nh Vip đ&atilde; tạo ra 2 c&ocirc;ng cụ hỗ trợ t&iacute;nh
+          to&aacute;n TDEE tự động. Đ&oacute; l&agrave; c&ocirc;ng cụ
+          t&iacute;nh TDEE bằng chiều cao c&acirc;n nặng v&agrave; c&ocirc;ng cụ
+          t&iacute;nh TDEE bằng body fat.
+        </p>
+        <blockquote>
+          <ul>
+            <li>
+              C&ocirc;ng cụ t&iacute;nh TDEE bằng chiều cao c&acirc;n nặng
+            </li>
+            <li>C&ocirc;ng cụ t&iacute;nh TDEE bằng body fat</li>
+          </ul>
+        </blockquote>
+        <p>
+          C&aacute;c c&ocirc;ng cụ n&agrave;y sẽ sử dụng c&ocirc;ng thức
+          t&iacute;nh TDEE th&ocirc;ng qua "hệ số vận động" v&agrave; "chỉ số
+          BMR". Tuy nhi&ecirc;n, để gi&uacute;p bạn tiết kiệm thời gian,
+          n&ecirc;n Thể H&igrave;nh Vip sẽ t&iacute;ch hợp lu&ocirc;n c&ocirc;ng
+          thức BMR trong c&ocirc;ng cụ t&iacute;nh TDEE.
+        </p>
+        <p>
+          Trong trường hợp muốn sử dụng c&aacute;ch t&iacute;nh TDEE bằng tổng
+          calo ti&ecirc;u hao, th&igrave; bạn h&atilde;y sử dụng c&ocirc;ng cụ
+          t&iacute;nh BMR ri&ecirc;ng biệt m&agrave; Thể H&igrave;nh Vip
+          đ&atilde; đề cập ở c&aacute;c phần nội dung b&ecirc;n tr&ecirc;n.
+        </p>
+        <h2>C&aacute;ch sử dụng ăn theo TDEE để tăng giảm c&acirc;n</h2>
+        <p>
+          Như vậy l&agrave; giờ đ&acirc;y, ch&uacute;ng ta đ&atilde; c&oacute;
+          thể t&iacute;nh to&aacute;n được chỉ số TDEE một c&aacute;ch dễ
+          d&agrave;ng với c&ocirc;ng cụ của Thể H&igrave;nh Vip. Vậy, sau khi
+          c&oacute; được chỉ số TDEE, th&igrave; ch&uacute;ng ta sẽ cần
+          l&agrave;m g&igrave; tiếp theo? Ch&uacute;ng sẽ gi&uacute;p
+          ch&uacute;ng ta tăng c&acirc;n hoặc giảm c&acirc;n ra sao?<br /><br />Đ&aacute;p
+          &aacute;n cho những c&acirc;u hỏi tr&ecirc;n sẽ được tr&igrave;nh
+          b&agrave;y ngay trong phần nội dung sau đ&acirc;y. Tuy nhi&ecirc;n,
+          c&oacute; một điều rất quan trọng về TDEE m&agrave; bạn cần lưu
+          &yacute;. Đ&oacute; l&agrave; chỉ số TDEE thu được từ c&aacute;c
+          c&ocirc;ng thức / c&ocirc;ng cụ, chỉ l&agrave; một con số ước
+          t&iacute;nh.<br /><br />Chứ ch&uacute;ng kh&ocirc;ng ch&iacute;nh
+          x&aacute;c tuyệt đối 100%. Để t&igrave;m ra mức TDEE thật sự của bản
+          th&acirc;n, th&igrave; bạn sẽ cần theo d&otilde;i c&acirc;n nặng của
+          m&igrave;nh trong v&ograve;ng từ 1-2 tuần. V&agrave; xem c&aacute;ch
+          m&agrave; cơ thể phản hồi với lượng calo n&agrave;y.<br /><br />
+        </p>
+        <h3>C&aacute;ch t&iacute;nh TDEE giảm c&acirc;n</h3>
+        <p>
+          Sau khi được c&aacute;c "idol" chia sẻ về TDEE, chắc hẳn bạn đang rất
+          n&oacute;ng l&ograve;ng muốn biết c&aacute;ch t&iacute;nh "TDEE giảm
+          c&acirc;n" để giảm b&eacute;o hiệu quả. Thế nhưng, thật kh&ocirc;ng
+          may, ch&uacute;ng ta kh&ocirc;ng c&oacute; bất kỳ kh&aacute;i niệm
+          n&agrave;o được gọi l&agrave; "TDEE giảm c&acirc;n".<br /><br />TDEE
+          v&agrave; lượng calo cần ăn để giảm c&acirc;n l&agrave; 2 chỉ số
+          ho&agrave;n to&agrave;n kh&aacute;c nhau. Trong đ&oacute;, TDEE
+          l&agrave; lượng calo m&agrave; bạn ti&ecirc;u hao (đốt ch&aacute;y),
+          c&ograve;n calo để giảm c&acirc;n l&agrave; lượng calo m&agrave; bạn
+          c&oacute; được sau khi t&iacute;nh to&aacute;n dựa tr&ecirc;n chỉ số
+          TDEE.<br /><br />Tr&ecirc;n thực tế, lượng calo cần thiết cho việc
+          giảm c&acirc;n kh&ocirc;ng c&oacute; một t&ecirc;n gọi cụ thể
+          n&agrave;o cả. V&igrave; vậy, bất kỳ trang web n&agrave;o sử dụng
+          kh&aacute;i "TDEE giảm c&acirc;n" đều l&agrave; những trang web cung
+          cấp th&ocirc;ng tin sai lệch.<br /><br />Vậy, l&agrave;m thế
+          n&agrave;o để ch&uacute;ng ta c&oacute; thể t&iacute;nh được lượng
+          calo cần ăn để giảm c&acirc;n dựa tr&ecirc;n TDEE? Một số người sẽ
+          khuy&ecirc;n bạn n&ecirc;n chọn một mức calo chung chung l&agrave; ăn
+          dưới TDEE, ăn &iacute;t hơn (thấp hơn) TDEE.<br /><br />
+        </p>
+        <h3>C&aacute;ch t&iacute;nh TDEE tăng c&acirc;n</h3>
+        <p>
+          Tương tự như "TDEE giảm c&acirc;n", kh&aacute;i niệm "TDEE tăng
+          c&acirc;n" kh&ocirc;ng tồn tại. Do đ&oacute;, bạn h&atilde;y thận
+          trọng khi tham khảo th&ocirc;ng tin từ những trang sử dụng c&aacute;ch
+          gọi n&agrave;y. Vậy, nếu muốn tăng c&acirc;n, th&igrave; ch&uacute;ng
+          ta sẽ cần ăn uống như thế n&agrave;o?<br /><br />
+        </p>
+      </div>
+      <!-- Blog end -->
+    </div>
+  </div>
+</div>
+
+<!-- <script>
+  function cal2() {
+    var nang2 = document.getElementById("innang2");
+    var bodyfat = document.getElementById("inbodyfat");
+    var ex2 = document.getElementsByName("ex2");
+    for (var i = 0; i < ex2.length; i++) {
+      if (ex2[i].checked) {
+        xx = ex2[i].value;
+        break;
+      }
+    }
+    if (nang2.value == "" || bodyfat.value == "") {
+      alert("Vui lòng nhập đầy đủ dữ liệu.");
+      return;
+    }
+    var w = nang2.value;
+    var f = bodyfat.value;
+    var bmr2 = 21.6 * (w - w * f * 0.01) + 370;
+    if (xx == "0") {
+      var tdee2 = bmr2 * 1.2;
+      $("#result2").css({
+        padding: "10px",
+        margin: "20px 0 10px 0",
+        "text-align": "center",
+      });
+      $("#result2").html(
+        "Chỉ số TDEE của bạn là : " + Math.round(tdee2) + " calo"
+      );
+    } else if (xx == "1") {
+      var tdee2 = bmr2 * 1.375;
+      $("#result2").css({
+        padding: "10px",
+        margin: "20px 0 10px 0",
+        "text-align": "center",
+      });
+      $("#result2").html(
+        "Chỉ số TDEE của bạn là : " + Math.round(tdee2) + " calo"
+      );
+    } else if (xx == "2") {
+      var tdee2 = bmr2 * 1.55;
+      $("#result2").css({
+        padding: "10px",
+        margin: "20px 0 10px 0",
+        "text-align": "center",
+      });
+      $("#result2").html(
+        "Chỉ số TDEE của bạn là : " + Math.round(tdee2) + " calo"
+      );
+    } else if (xx == "3") {
+      var tdee2 = bmr2 * 1.725;
+      $("#result2").css({
+        padding: "10px",
+        margin: "20px 0 10px 0",
+        "text-align": "center",
+      });
+      $("#result2").html(
+        "Chỉ số TDEE của bạn là : " + Math.round(tdee2) + " calo"
+      );
+    } else if (xx == "4") {
+      var tdee2 = bmr2 * 1.9;
+      $("#result2").css({
+        padding: "10px",
+        margin: "20px 0 10px 0",
+        "text-align": "center",
+      });
+      $("#result2").html(
+        "Chỉ số TDEE của bạn là : " + Math.round(tdee2) + " calo"
+      );
+    }
+  }
+</script> -->

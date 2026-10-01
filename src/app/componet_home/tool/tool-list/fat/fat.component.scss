@@ -1,0 +1,129 @@
+.protein-calculator h2.calc-header {
+  background-color: #3fb178;
+  text-align: center;
+  border: solid 1px #dbdbdb;
+  border-bottom: none;
+  color: #ffffff !important;
+  margin: 0 !important;
+  padding: 10px;
+  border: solid 1px #3fb178;
+}
+
+.protein-calculator .calc-container {
+  border: solid 1px #cccccc;
+  border-top: solid 1px #ffffff;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+.protein-calculator .calc-subheader {
+  display: block;
+  font-size: 20px;
+  font-size: 20px;
+  margin: 20px 0px 10px 0px;
+  text-transform: uppercase;
+}
+
+.protein-calculator .calc-row {
+  margin-bottom: 5px;
+}
+
+input.calc-textbox {
+  box-sizing: border-box;
+  height: auto;
+  line-height: inherit;
+  font-size: 18px;
+  width: 100%;
+}
+
+.calc-textbox-half{
+  box-sizing: border-box;
+  height: auto;
+  line-height: inherit;
+  font-size: 18px;
+  width: 100%;
+}
+
+.protein-calculator input.calc-textbox-half {
+  box-sizing: border-box;
+  height: auto;
+  line-height: inherit;
+  width: 49.5%;
+}
+
+.protein-calculator .calc-float-right {
+  float: right;
+}
+
+.protein-calculator .calc-row input[type="radio"] {
+  display: none;
+}
+
+.protein-calculator .calc-row input[type="radio"]+label span {
+  background: url(../../../../../assets/images/iconlist.png) no-repeat -75px -1250px;
+  cursor: pointer;
+  display: inline-block;
+  height: 23px;
+  margin: 2px 5px 5px 6px;
+  vertical-align: middle;
+  width: 21px;
+}
+
+.protein-calculator .calc-row input[type="radio"]:checked+label span {
+  background: url(../../../../../assets/images/iconlist.png) no-repeat -50px -1250px;
+}
+
+
+.protein-calculator .calc-label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-size: 1.4rem;
+  padding: 6px;
+  width: 100%;
+}
+
+.protein-calculator .calc-label-small {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-size: 1.4rem;
+  padding: 6px;
+  width: 49.5%;
+}
+
+
+.protein-calculator .calc-submit {
+  margin-top: 5px;
+}
+
+.protein-calculator .calc-answer {
+  display: none;
+}
+
+.bb-flat-btn {
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-weight: 400;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  color: #fff;
+  border-radius: 2px;
+  text-transform: uppercase;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 20px;
+  background-color: #00aeef;
+  border: 1px solid #00aeef;
+}
+
+.bb-flat-btn:hover {
+  background-color: #0066ff;
+}
+
+.dpg-calculator.protein-calculator {
+  margin: 0 auto;
+}

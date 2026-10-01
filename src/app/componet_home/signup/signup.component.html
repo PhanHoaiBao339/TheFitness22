@@ -1,0 +1,95 @@
+<div class="bodysignup">
+  <div class="boxsignup ">
+    <!-- <div class=" backgroundform"></div> -->
+    <form [formGroup]="form" class="formsignup" (ngSubmit)="onSubmit()">
+      <div class="text-center">
+        <h2 style="font-size: 36px;">Sign Up</h2>
+        <img src="assets/images/logo/logo.png" alt="Fitness Logo" style="height: 50px; width: 50px;">
+      </div>
+      <div class="text-center" style="height: 40px;">
+        <h3 class="text-success m-0 mt-2">{{isRegisterMessageAccept$|async}}</h3>
+      </div>
+      <div class="inputBoxsignup"><span>Username</span>
+        <!-- <input type="text" name="username" required="required" [(ngModel)]="username" /> -->
+        <input type="text" formControlName="username" class="form-control" name="username"
+          [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" (focus)="isUsernameTaken=true" />
+        <div *ngIf="submitted && f['username'].errors" class="invalid-feedback text-warning">
+          <div *ngIf="f['username'].errors['required']">Username is required!</div>
+          <div *ngIf="f['username'].errors['minlength']">
+            Username must be at least 3 characters!
+          </div>
+          <div *ngIf="f['username'].errors['maxlength']">
+            Username must not exceed 20 characters!
+          </div>
+          <div *ngIf="f['username'].errors['pattern']">
+            Username must be lowercase letters and numbers!
+          </div>
+        </div>
+        <div *ngIf="!isUsernameTaken" class="text-warning">
+          {{isRegisterMessageUsernameError$|async}}
+        </div>
+      </div>
+      <div class="inputBoxsignup"><span>Email</span>
+        <!-- <input type="text" name="email" required="required" [(ngModel)]="email" /> -->
+        <input type="text" formControlName="email" class="form-control" name="email" (focus)="isEmailTaken=true"
+          [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback text-warning">
+          <div *ngIf="f['email'].errors['required']">Email is required!</div>
+          <div *ngIf="f['email'].errors['email']">Email is invalid!</div>
+        </div>
+        <div *ngIf="!isEmailTaken" class="text-warning">
+          {{isRegisterMessageEmailError$|async}}
+        </div>
+      </div>
+      <div class="inputBoxsignup"><span>Password</span>
+        <!-- <input type="password" name="password" required="required" [(ngModel)]="password" /> -->
+        <input type="password" formControlName="password" class="form-control" name="password"
+          [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
+        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback text-warning">
+          <div *ngIf="f['password'].errors['required']">Password is required!</div>
+          <div *ngIf="f['password'].errors['minlength']">
+            Password must be at least 8 characters!
+          </div>
+          <div *ngIf="f['password'].errors['maxlength']">
+            Password must not exceed 40 characters!
+          </div>
+        </div>
+      </div>
+      <div class="inputBoxsignup"><span>Confirm Password</span>
+        <!-- <input type="password" name="confirmPassword" required="required" [(ngModel)]="confirmPassword" /> -->
+        <input type="password" formControlName="confirmPassword" class="form-control" name="confirmPassword"
+          [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }" />
+        <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback text-warning">
+          <div *ngIf="f['confirmPassword'].errors['required']">
+            Confirm Password is required!
+          </div>
+          <div *ngIf="f['confirmPassword'].errors['matching']">
+            Confirm Password does not match!
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <button class="btn btn-outline-primary px-5 w-100" type="submit" [disabled]="isDisable">
+          <span [hidden]="isDisable">Register</span>
+          <div class="d-flex align-items-center" style="height: 50px;" *ngIf="isDisable">
+            <div class="loader" *ngIf="isSuccess">
+              <div class="orbe" style="--index: 0"></div>
+              <div class="orbe" style="--index: 1"></div>
+              <div class="orbe" style="--index: 2"></div>
+              <div class="orbe" style="--index: 3"></div>
+              <div class="orbe" style="--index: 4"></div>
+            </div>
+            <span class="text-success" style="font-size: 50px;" [hidden]="isSuccess"><i class='bx bx-check'></i></span>
+          </div>
+        </button>
+      </div>
+      <div class="text-center mt-3">
+        <a class="" [routerLink]="['/login']" routerLinkActive="router-link-active"><i class="far fa-angle-left"></i>
+          Login</a>
+      </div>
+    </form>
+
+
+
+  </div>
+</div>

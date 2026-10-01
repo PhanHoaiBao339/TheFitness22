@@ -1,0 +1,144 @@
+<!-- Page Title Section Start -->
+<div class="page-title-section section" style="background-image: url(../../assets/images/bg/breadcrumb-shop.jpg);">>
+  <div class="page-title pt-lg-10 pt-10">
+    <div class="container">
+      <h1 class="title">Shopping Cart</h1>
+    </div>
+  </div>
+</div>
+<!-- Page Title Section End -->
+
+<!--Shopping Cart Section Start -->
+<div class="section section-padding">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-12">
+        <!-- Cart Table -->
+        <div class="cart-table table-responsive mb-6" data-aos="fade-up">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="pro-thumbnail">Image</th>
+                <th class="pro-title">Product</th>
+                <th class="pro-price">Flavor Or Color</th>
+                <th class="pro-price">Size</th>
+                <th class="pro-price">Price</th>
+                <th class="pro-quantity">Quantity</th>
+                <th class="pro-subtotal">Total</th>
+                <th class="pro-remove">Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of ShopCartList;index as i">
+                <td class="pro-thumbnail"><a [routerLink]="['/product-details',item?.product.id]"
+                    routerLinkActive="router-link-active"><img
+                      src="{{rootUrl}}{{item?.product.image1}}" alt="Product"></a></td>
+                <td class="pro-title"><a [routerLink]="['/product-details',item?.product.id]"
+                    routerLinkActive="router-link-active">{{item?.product.name}}</a></td>
+                <td class="pro-price"><span>{{item?.flavororcolor}}</span></td>
+                <td class="pro-price"><span>{{item?.size}}</span></td>
+                <td class="pro-price"><span>{{item?.product.price |
+                    currency:'VND':'VNĐ'}}</span></td>
+                <td class="pro-quantity">
+                  <div class="pro-qty quantity">
+                    <input id="quantity{{i}}" type="number" min="1" value="1" [(ngModel)]="item.quantity"
+                      [ngModelOptions]="{standalone:true}" (change)="changeSubTotal(item)">
+                    <div class="quantity-nav">
+                      <div class="quantity-button quantity-up" (click)="plusQuantity(item,i)">+</div>
+                      <div class="quantity-button quantity-down" (click)="minusQuantity(item,i)">-</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="pro-subtotal"><span>{{item?.totalprice |
+                    currency:'VND':'VNĐ'}}</span></td>
+                <td class="pro-remove"><a (click)="removeProcuctInCart(i)"><i class="far fa-trash-alt"></i></a></td>
+              </tr>
+              <tr *ngIf="cartEmpty">
+                <td colspan="7">
+                  <h1 class="text-uppercase"><i class="far fa-shopping-cart" aria-hidden="true"></i> your shopping cart
+                    is <b>empty</b></h1>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="mt-2 text-end"><button class="btn btn-outline-danger" (click)="CleanAllCart()">Clean All</button>
+          </div>
+        </div>
+
+        <div class="row max-mb-n30">
+
+          <div class="col-lg-6 col-12 mb-6" data-aos="fade-up" data-aos-delay="300">
+            <!-- Calculate Shipping -->
+            <!-- <div class="calculate-shipping">
+              <h4>Calculate Shipping</h4>
+              <form action="#">
+                <div class="row mb-n6">
+                  <div class="col-md-6 col-12 mb-6">
+                    <select>
+                      <option>Bangladesh</option>
+                      <option>China</option>
+                      <option>country</option>
+                      <option>India</option>
+                      <option>Japan</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 col-12 mb-6">
+                    <select>
+                      <option>Dhaka</option>
+                      <option>Barisal</option>
+                      <option>Khulna</option>
+                      <option>Comilla</option>
+                      <option>Chittagong</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 col-12 mb-6">
+                    <input type="text" placeholder="Postcode / Zip">
+                  </div>
+                  <div class="col-lg-6 col-md-12 col-12 mb-6">
+                    <button class="btn btn-primary btn-hover-secondary">Estimate</button>
+                  </div>
+                </div>
+              </form>
+            </div> -->
+            <!-- Discount Coupon -->
+            <!-- <div class="discount-coupon">
+              <h4>Discount Coupon Code</h4>
+              <form action="#">
+                <div class="row mb-n6">
+                  <div class="col-md-6 col-12 mb-6">
+                    <input type="text" placeholder="Coupon Code">
+                  </div>
+                  <div class="col-lg-6 col-md-12 col-12 mb-6">
+                    <button class="btn btn-primary btn-hover-secondary">Apply Code</button>
+                  </div>
+                </div>
+              </form>
+            </div> -->
+          </div>
+
+          <!-- Cart Summary -->
+          <div class="col-lg-6 col-12 mb-6 d-flex" data-aos="fade-up" data-aos-delay="600">
+            <div class="cart-summary">
+              <div class="cart-summary-wrap">
+                <h4>Cart Summary</h4>
+                <p>Sub Total <span>{{total_price | currency:'VND':'VNĐ'}}</span></p>
+                <!-- <p>Shipping Cost <span>$00.00</span></p>  -->
+                <h2>Grand Total <span>{{total_price | currency:'VND':'VNĐ'}}</span></h2>
+              </div>
+              <div class="cart-summary-button">
+                <button [routerLink]="['/checkout']" routerLinkActive="router-link-active"
+                  class="btn btn-primary btn-hover-secondary">Checkout</button>
+                <button class="btn btn-primary btn-hover-secondary">Update Cart</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--Shopping Cart Section End -->

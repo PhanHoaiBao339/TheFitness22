@@ -1,0 +1,120 @@
+<section class="mx-3">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="btn btn-outline-info text-dark active" id="nav-table-order-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-table-order" type="button" role="tab" aria-controls="nav-table-order"
+        aria-selected="true">Order</button>
+      <button class="btn btn-outline-info text-dark" id="nav-table-orderdetail-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-table-orderdetail" type="button" role="tab" aria-controls="nav-table-orderdetail"
+        aria-selected="false">Order Detail</button>
+      <button class="btn btn-outline-success" (click)="refresh()">Resfresh All Table</button>
+
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-table-order" role="tabpanel" aria-labelledby="nav-table-order-tab"
+      tabindex="0">
+      <!-- Loading -->
+      <div *ngIf="loading1" class="d-flex flex-column align-items-center justify-content-center bg-light"
+        style="height: 830px;">
+        <div class="loader">
+          <div class="orbe" style="--index: 0"></div>
+          <div class="orbe" style="--index: 1"></div>
+          <div class="orbe" style="--index: 2"></div>
+          <div class="orbe" style="--index: 3"></div>
+          <div class="orbe" style="--index: 4"></div>
+        </div>
+      </div>
+      <!-- Loading -->
+      <!-- Table -->
+      <div *ngIf="!loading1" class="outer-wrapper my-2 mx-2">
+        <div class="table-wrapper">
+          <table class="table m-0">
+            <thead class="">
+              <tr class="text-center">
+                <th scope="col">#</th>
+                <th scope="col">View</th>
+                <th scope="col">Id</th>
+                <th scope="col">Username</th>
+                <th scope="col">Fullname</th>
+                <th scope="col">Create Day</th>
+                <th scope="col">Payment Method</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Address</th>
+                <th scope="col">Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="align-middle text-center" *ngFor="let item of listAllOrder;index as i">
+                <td class="text-center" scope="row">{{i+1}}</td>
+                <th scope="col"><a (click)="showDetail(item.id)"><i class="fas fa-eye" aria-hidden="true"></i></a></th>
+                <td class="text-center">{{item?.id}}</td>
+                <td>{{item?.account.username}}</td>
+                <td>{{item?.fullname}}</td>
+                <td>{{item?.createDate|date:"dd/MM/yyyy"}}</td>
+                <td>{{item?.paymentmethod}}</td>
+                <td>{{item?.totalprice| currency:'VND':'VNĐ'}}</td>
+                <td>{{item?.phone}}</td>
+                <td>{{item?.address}}</td>
+                <td>{{item?.note}}</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Table -->
+    </div>
+    <div class="tab-pane fade" id="nav-table-orderdetail" role="tabpanel" aria-labelledby="nav-table-orderdetail-tab"
+      tabindex="0">
+      <!-- Loading -->
+      <div *ngIf="loading2" class="d-flex flex-column align-items-center justify-content-center bg-light"
+        style="height: 830px;">
+        <div class="loader">
+          <div class="orbe" style="--index: 0"></div>
+          <div class="orbe" style="--index: 1"></div>
+          <div class="orbe" style="--index: 2"></div>
+          <div class="orbe" style="--index: 3"></div>
+          <div class="orbe" style="--index: 4"></div>
+        </div>
+      </div>
+      <!-- Loading -->
+      <!-- Table -->
+      <div *ngIf="!loading2" class="outer-wrapper my-2 mx-2">
+        <div class="table-wrapper">
+          <table class="table">
+            <thead class="">
+              <tr class="text-center">
+                <th scope="col"><button class="btn btn-outline-success px-2" style="height: 30px;" (click)="allDetail()">All</button></th>
+                <th scope="col">Id</th>
+                <th scope="col">Id Order</th>
+                <th scope="col">Username</th>
+                <th colspan="2" scope="col">Product</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">Total Quantity</th>
+                <th scope="col">Extra Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="align-middle text-center" *ngFor="let item of listAllOrderDetail;index as i">
+                <td class="text-center" scope="row">{{i+1}}</td>
+                <td class="text-center">{{item?.id}}</td>
+                <td class="text-center">{{item?.orderProduct.id}}</td>
+                <td>{{item?.orderProduct.account.username}}</td>
+                <td>{{item?.product.id}}</td>
+                <td>{{item?.product.name}}</td>
+                <td>{{item?.price|currency:'VND':'VNĐ'}}</td>
+                <td class="text-center">{{item?.quantity}}</td>
+                <td>{{item?.extradetails}}</td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Table -->
+    </div>
+
+  </div>
+</section>

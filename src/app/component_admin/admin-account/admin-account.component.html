@@ -1,0 +1,228 @@
+<section class="mx-3">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="btn btn-outline-info text-dark active" id="nav-table-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-table" type="button" role="tab" aria-controls="nav-table"
+        aria-selected="true">Table</button>
+      <button class="btn btn-outline-info text-dark" id="nav-edit-tab" data-bs-toggle="tab" data-bs-target="#nav-edit"
+        type="button" role="tab" aria-controls="nav-edit" aria-selected="false">Edit</button>
+
+      <!-- <button class="btn btn-outline-success text-dark" id="refresh" type="button"
+        (click)="refreshTable()">Refresh</button> -->
+
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-table" role="tabpanel" aria-labelledby="nav-table-tab" tabindex="0">
+      <!-- Loading -->
+      <div *ngIf="loading" class="d-flex flex-column align-items-center justify-content-center bg-light"
+        style="height: 830px;">
+        <div class="loader">
+          <div class="orbe" style="--index: 0"></div>
+          <div class="orbe" style="--index: 1"></div>
+          <div class="orbe" style="--index: 2"></div>
+          <div class="orbe" style="--index: 3"></div>
+          <div class="orbe" style="--index: 4"></div>
+        </div>
+      </div>
+      <!-- Loading -->
+      <!-- Table -->
+      <div *ngIf="!loading" class="outer-wrapper my-2 mx-2">
+        <div class="table-wrapper">
+          <table class="table m-0">
+            <thead class="">
+              <tr class="text-center">
+                <th scope="col">#</th>
+                <th scope="col">Tools</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Fullname</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Birthday</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Address</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Active</th>
+                <th scope="col">Create Day</th>
+                <th scope="col">Update Day</th>
+                <th scope="col">Delete Day</th>
+                <th scope="col">Personupdate</th>
+                <th scope="col">Person delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="align-middle text-center" *ngFor="let item of listAll;index as i">
+                <td class="text-center" scope="row">{{i+1}}</td>
+                <td>
+                  <button class="btn btn-outline-success p-1 mx-1" style="height: 35px;"
+                    (click)="goToEdit(item,i)">Edit</button>
+                  <button class="btn btn-outline-primary p-1 mx-1" style="height: 35px;"
+                    (click)="deleteById(item.username,i)">Delete</button>
+                </td>
+                <td>{{item?.username}}</td>
+                <td>{{item?.email}}</td>
+                <td>***********</td>
+                <td>{{item?.fullname}}</td>
+                <td>{{item?.gender==null?'':(item?.gender?'Male':'Female')}}</td>
+                <td>{{item?.birthday|date:"dd/MM/yyyy"}}</td>
+                <td>{{item?.phone}}</td>
+                <td>{{item?.address}}</td>
+                <td>{{item?.photo}}</td>
+                <td class="text-center">{{item?.active?'Yes':'No'}}</td>
+                <td class="text-center">{{item?.createday|date:"dd/MM/yyyy"}}</td>
+                <td class="text-center">{{item?.updateday|date:"dd/MM/yyyy"}}</td>
+                <td class="text-center">{{item?.deleteday|date:"dd/MM/yyyy"}}</td>
+                <td>{{item?.personupdate}}</td>
+                <td>{{item?.persondelete}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Table -->
+    </div>
+    <div class="tab-pane fade" id="nav-edit" role="tabpanel" aria-labelledby="nav-edit-tab" tabindex="0">
+      <div class="row">
+        <div class="col-4">
+          <img class="border border-danger rounded-circle m-auto my-4 d-block" id="img-preview" style="width: 58%;"
+            src="{{downloadUrl}}{{accountEdit?.photo||'No_image_available.png'}}">
+          <div class="pe-3 text-center d-flex flex-column justify-content-center">
+            <label class="fs-2 py-3">{{photoImage}}</label>
+            <input style="display: none;" id="FileUploadInput" type="file" name="image" placeholder="Photo"
+              accept="image/png, image/jpeg" (change)="changeImageFile($event)">
+            <button class="col-4 mx-auto btn btn-outline-info " (click)="clickInputImage()">Select New Photo</button>
+          </div>
+        </div>
+
+        <form [formGroup]="form" class="col-8 row my-4 rounded-5  shadow  bg-body">
+          <div class="col-6 my-2">
+            <h2 class="m-0">Username<span class="text-primary">*</span></h2>
+            <input type="text" name="username" id="username" placeholder="Username" [readOnly]="readonly"
+              formControlName="username" [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"
+              (keyup)="checkUserOrEmailTaken('username')">
+
+            <div *ngIf="submitted && f['username'].errors" class="invalid-feedback text-primary">
+              <div *ngIf="f['username'].errors['required']">Username is required!</div>
+              <div *ngIf="f['username'].errors['minlength']">
+                Username must be at least 3 characters!
+              </div>
+              <div *ngIf="f['username'].errors['maxlength']">
+                Username must not exceed 20 characters!
+              </div>
+              <div *ngIf="f['username'].errors['pattern']">
+                Username must be lowercase letters and numbers!
+              </div>
+            </div>
+            <div *ngIf="isUsernameTaken" class="text-primary">
+              Username is already taken!
+            </div>
+
+          </div>
+          <div class="col-6 my-2">
+            <h2 class="m-0">Email Address<span class="text-primary">*</span></h2>
+            <input type="email" formControlName="email" name="email" placeholder="Email Address" id="email"
+              [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" (keyup)="checkUserOrEmailTaken('email')">
+
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback text-primary">
+              <div *ngIf="f['email'].errors['required']">Email is required!</div>
+              <div *ngIf="f['email'].errors['email']">Email is invalid!</div>
+            </div>
+            <div *ngIf="isEmailTaken" class="text-primary">
+              Email is already taken!
+            </div>
+          </div>
+          <div class="col-6 my-2">
+            <h2 class="m-0">Password<span class="text-primary">*</span></h2>
+            <input type="password" formControlName="password" name="password" placeholder="Password" id="password"
+              formControlName="password" (focus)="changerPassword()" (blur)="resetPass()"
+              [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback text-primary">
+              <div *ngIf="f['password'].errors['required']">Password is required!</div>
+              <div *ngIf="f['password'].errors['minlength']">
+                Password must be at least 8 characters!
+              </div>
+              <div *ngIf="f['password'].errors['maxlength']">
+                Password must not exceed 60 characters!
+              </div>
+            </div>
+          </div>
+          <div class="col-6 my-2">
+            <h2 class="m-0">Full Name</h2>
+            <input type="text" name="fullname" placeholder="Full Name" [(ngModel)]="accountEdit.fullname"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="col-6 my-2">
+            <h2 class="m-0">Birthday</h2>
+            <input type="date" name="birthday" placeholder="Birthday" [(ngModel)]="birthdayValue"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="col-6 my-2">
+            <h2 class="m-0">Address</h2>
+            <input type="text" name="address" placeholder="Address" [(ngModel)]="accountEdit.address"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="col-6 my-2">
+            <h2 class="m-0">Phone</h2>
+            <input type="text" name="phone" placeholder="Phone" [(ngModel)]="accountEdit.phone"
+              [ngModelOptions]="{standalone: true}">
+          </div>
+
+          <div class="col-6 row my-2">
+            <div class="col-6 my-2">
+              <h2 class="m-0">Gender</h2>
+              <div class="form-check p-0 d-flex align-items-center justify-content-left" style="height: 50px;">
+                <!-- <input class="form-check-input" type="checkbox" id="acctive" [(ngModel)]="accountEdit.gender"> -->
+                <div class="col-10 row d-flex justify-content-around m-0">
+                  <div class="col-6 form-check d-flex align-items-center">
+                    <input class="form-check-input my-auto" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                      [value]=true [(ngModel)]="accountEdit.gender" [ngModelOptions]="{standalone: true}">
+                    <h3 class="form-check-label my-0 mx-2" for="flexRadioDefault1">
+                      Male
+                    </h3>
+                  </div>
+                  <div class="col-6 form-check d-flex align-items-center">
+                    <input class="form-check-input my-auto" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                      [value]=false [(ngModel)]="accountEdit.gender" [ngModelOptions]="{standalone: true}">
+                    <h3 class="form-check-label my-0 mx-2" for="flexRadioDefault2">
+                      Female
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 my-2">
+              <h2 class="m-0">Active</h2>
+              <div class="form-check d-flex align-items-center justify-content-left" style="height: 50px;">
+                <input class="form-check-input" type="checkbox" id="acctive" [(ngModel)]="accountEdit.active"
+                  [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+          </div>
+        </form>
+
+
+      </div>
+      <div class="row">
+        <div class="col-4 my-4 d-flex justify-content-center">
+          <div class="col-6 d-flex flex-column justify-content-around p-2">
+            <button [hidden]="!changerImage" class="btn btn-outline-info mt-3" style="font-size: 25px;"
+              (click)="resetImage()">Reset Photo</button>
+          </div>
+        </div>
+        <div class="col-8 my-4 d-flex justify-content-center">
+          <div class="col-8 d-flex justify-content-around p-2">
+            <button class="btn btn-outline-info" style="font-size: 25px;" [disabled]="btnNewDis"
+              (click)="refreshEdit()">New</button>
+            <button class="btn btn-outline-success" style="font-size: 25px;" [disabled]="btnSaveDis"
+              (click)="onSubmit('create')">Create</button>
+            <button class="btn btn-outline-success" style="font-size: 25px;" [disabled]="btnUpdateDis"
+              (click)="onSubmit('update')">Update</button>
+            <button class="btn btn-outline-primary" style="font-size: 25px;" [disabled]="btnDeleteDis"
+              (click)="deleteById(accountEdit.username,-1)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

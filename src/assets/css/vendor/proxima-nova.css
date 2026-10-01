@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Proxima Nova Bl';
+    src: url('../../fonts/proxima-nova/ProximaNova-Black.woff2') format('woff2'),
+        url('../../fonts/proxima-nova/ProximaNova-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Proxima Nova Alt Th';
+    src: url('../../fonts/proxima-nova/ProximaNovaA-Thin.woff2') format('woff2'),
+        url('../../fonts/proxima-nova/ProximaNovaA-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Proxima Nova Rg';
+    src: url('../../fonts/proxima-nova/ProximaNova-Bold.woff2') format('woff2'),
+        url('../../fonts/proxima-nova/ProximaNova-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Proxima Nova Alt Rg';
+    src: url('../../fonts/proxima-nova/ProximaNovaA-Bold.woff2') format('woff2'),
+        url('../../fonts/proxima-nova/ProximaNovaA-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Proxima Nova Alt Lt';
+    src: url('../../fonts/proxima-nova/ProximaNovaA-Light.woff2') format('woff2'),
+        url('../../fonts/proxima-nova/ProximaNovaA-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Proxima Nova Th';
+    src: url('../../fonts/proxima-nova/ProximaNova-Extrabld.woff2') format('woff2'),
+        url('../../fonts/proxima-nova/ProximaNova-Extrabld.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Proxima Nova Th';
+    src: url('../../fonts/proxima-nova/ProximaNovaT-Thin.woff2') format('woff2'),
+        url('../../fonts/proxima-nova/ProximaNovaT-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Proxima Nova Rg';
+    src: url('../../fonts/proxima-nova/ProximaNova-Regular.woff2') format('woff2'),
+        url('../../fonts/proxima-nova/ProximaNova-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

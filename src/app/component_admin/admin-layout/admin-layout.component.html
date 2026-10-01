@@ -1,0 +1,135 @@
+<div class="sidebar">
+  <div class="logo_details">
+    <img src="../../../assets/images/logo/logo.png" style="margin-right: 10px;">
+    <div class="logo_name">Web Fitness</div>
+    <i class="bx bx-menu" id="btn"></i>
+  </div>
+  <ul class="nav-list" [hidden]="!((isLoggedDire$|async)||(isLoggedAdmin$|async))">
+    <li>
+      <i class="bx bx-search"></i>
+      <input type="text" placeholder="Search...">
+      <span class="tooltip">Search</span>
+    </li>
+    <li>
+      <a [routerLink]="['/admin/dashboard']" routerLinkActive="router-link-active"
+        (click)="changeTitlePage('Dashboard')">
+        <i class="bx bx-grid-alt"></i>
+        <span class="link_name">Dashboard</span>
+      </a>
+      <span class="tooltip">Dashboard</span>
+    </li>
+    <li [hidden]="!(isLoggedDire$|async)">
+      <a [routerLink]="['/admin/account']" routerLinkActive="router-link-active"
+        (click)="changeTitlePage('Account Manager')">
+        <i class="bx bx-user"></i>
+        <span class="link_name">Account</span>
+      </a>
+      <span class="tooltip">Account</span>
+    </li>
+    <li>
+      <a [routerLink]="['/admin/product']" routerLinkActive="router-link-active"
+        (click)="changeTitlePage('Product Manager')">
+        <i class='bx bx-package'></i>
+        <span class="link_name">Product</span>
+      </a>
+      <span class="tooltip">Product</span>
+    </li>
+    <li>
+      <a [routerLink]="['/admin/brand']" routerLinkActive="router-link-active"
+        (click)="changeTitlePage('Brand Manager')">
+        <i class='bx bx-purchase-tag-alt'></i>
+        <span class="link_name">Brand</span>
+      </a>
+      <span class="tooltip">Brand</span>
+    </li>
+    <li>
+      <a [routerLink]="['/admin/category']" routerLinkActive="router-link-active"
+        (click)="changeTitlePage('Category Manager')">
+        <i class='bx bx-category'></i>
+        <span class="link_name">Category</span>
+      </a>
+      <span class="tooltip">Category</span>
+    </li>
+    <li>
+      <a [routerLink]="['/admin/flavororcolor']" routerLinkActive="router-link-active"
+        (click)="changeTitlePage('Flavor Or Color Manager')">
+        <i class='bx bxs-flask'></i>
+        <span class="link_name">Flavor Or Color</span>
+      </a>
+      <span class="tooltip">Flavor Or Color</span>
+    </li>
+    <li>
+      <a [routerLink]="['/admin/size']" routerLinkActive="router-link-active" (click)="changeTitlePage('Size Manager')">
+        <i class='bx bx-ruler'></i>
+        <span class="link_name">Size</span>
+      </a>
+      <span class="tooltip">Size</span>
+    </li>
+    <li>
+      <a [routerLink]="['/admin/order']" routerLinkActive="router-link-active"
+        (click)="changeTitlePage('Order Manager')">
+        <i class="bx bx-cart-alt"></i>
+        <span class="link_name">Order</span>
+      </a>
+      <span class="tooltip">Order</span>
+    </li>
+    <li [hidden]="!(isLoggedDire$|async)">
+      <a [routerLink]="['/admin/authority']" routerLinkActive="router-link-active"
+        (click)="changeTitlePage('Authority And Role')">
+        <i class='bx bx-shield'></i>
+        <span class="link_name">Authority And Role</span>
+      </a>
+      <span class="tooltip">Authority And Role</span>
+    </li>
+    <li>
+      <a [routerLink]="['/admin/blogs']" routerLinkActive="router-link-active"
+        (click)="changeTitlePage('Blogs Manager')">
+        <i class='bx bxs-news'></i>
+        <span class="link_name">Blogs</span>
+      </a>
+      <span class="tooltip">Blogs</span>
+    </li>
+    <li class="gotohome">
+      <a [routerLink]="['/home']" routerLinkActive="router-link-active">
+        <i class='bx bx-home-alt'></i>
+        <span class="link_name">Home</span>
+      </a>
+      <span class="tooltip">Home</span>
+    </li>
+    <li class="profile">
+      <div class="profile_details">
+        <img src="{{rootUrl}}{{AdminAvatar}}" alt="profile image">
+        <div class="profile_content">
+          <div class="name">{{isLoggedFullname$|async}}</div>
+          <div class="designation">{{Role}}</div>
+        </div>
+      </div>
+      <i class="bx bx-log-out" id="log_out" (click)="logout()"></i>
+    </li>
+  </ul>
+</div>
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-body d-flex justify-content-center align-items-center">
+        <div class="loader">
+            <div class="orbe" style="--index: 0"></div>
+            <div class="orbe" style="--index: 1"></div>
+            <div class="orbe" style="--index: 2"></div>
+            <div class="orbe" style="--index: 3"></div>
+            <div class="orbe" style="--index: 4"></div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="home-section">
+  <div class="text">{{titlepage$|async}}</div>
+  <router-outlet></router-outlet>
+</section>

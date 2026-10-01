@@ -1,0 +1,173 @@
+<section class="mx-3">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="btn btn-outline-info text-dark active" id="nav-table-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-table" type="button" role="tab" aria-controls="nav-table"
+        aria-selected="true">Table</button>
+      <button class="btn btn-outline-info text-dark" id="nav-edit-tab" data-bs-toggle="tab" data-bs-target="#nav-edit"
+        type="button" role="tab" aria-controls="nav-edit" aria-selected="false">Edit</button>
+      <!-- <button class="btn btn-outline-info text-dark" id="nav-edit-content-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-edit-content" type="button" role="tab" aria-controls="nav-edit-content"
+        aria-selected="false">Edit Content</button> -->
+
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-table" role="tabpanel" aria-labelledby="nav-table-tab" tabindex="0">
+
+      <!-- Loading Start-->
+      <div *ngIf="loading" class="d-flex flex-column align-items-center justify-content-center bg-light"
+        style="height: 830px;">
+        <div class="loader">
+          <div class="orbe" style="--index: 0"></div>
+          <div class="orbe" style="--index: 1"></div>
+          <div class="orbe" style="--index: 2"></div>
+          <div class="orbe" style="--index: 3"></div>
+          <div class="orbe" style="--index: 4"></div>
+        </div>
+      </div>
+      <!-- Loading End -->
+
+
+      <!-- Table Start-->
+      <div *ngIf="!loading" class="outer-wrapper my-2 mx-2">
+        <div class="table-wrapper">
+          <table class="table m-0">
+            <thead class="">
+              <tr class="text-center">
+                <th scope="col">#</th>
+                <th scope="col">Tools</th>
+                <th scope="col">Id</th>
+                <th scope="col">Tile</th>
+                <th scope="col">Topic</th>
+                <th scope="col">Cover photo</th>
+                <th scope="col">Active</th>
+                <th scope="col">Contents</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="align-middle text-center" *ngFor="let item of listAll;index as i">
+                <td class="text-center" scope="row">{{i+1}}</td>
+                <td class="text-center">
+                  <button class="btn btn-outline-success p-1 mx-1" style="height: 35px;"
+                    (click)="goToEdit(item,i)">Edit</button>
+                  <button class="btn btn-outline-primary p-1 mx-1" style="height: 35px;"
+                    (click)="deleteById(item.id,i)">Delete</button>
+                </td>
+                <td>{{item?.id}}</td>
+                <td>{{item?.title}}</td>
+                <td>{{item?.topic}}</td>
+                <td class="text-center"><img src="{{rootUrl}}{{item?.image||'No_image_available.png'}}"></td>
+                <td class="text-center">{{item?.active}}</td>
+                <td>{{item?.contents}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <div class="tab-pane fade" id="nav-edit" role="tabpanel" aria-labelledby="nav-edit-tab" tabindex="0">
+      <div class="row">
+        <div class="col-6">
+          <div class="">
+            <img class="border border-danger m-auto my-4 d-block" style="width: 50%;" id="img-preview"
+              src="{{rootUrl}}{{blogEdit.image||'No_image_available.png'}}">
+            <div class="col-12 d-flex justify-content-around p-2">
+              <input style="display: none;" id="FileUploadInput" type="file" name="image" placeholder="image"
+                accept="image/png, image/jpeg" (change)="changeImageFile($event)">
+              <button class="col-4 mx-auto btn btn-outline-info" style="font-size: 25px;" (click)="clickInput()">Select
+                New Photo</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row my-4 p-2 rounded-5 shadow bg-body" style="width: 95%;">
+            <div class="col-6 my-2">
+              <h2 class="m-0">Id<span class="text-primary">*</span></h2>
+              <input type="text" name="id" placeholder="Id" [(ngModel)]="blogEdit.id" [readOnly]="true">
+            </div>
+            <form [formGroup]="form" class="col-6 my-2">
+              <h2 class="m-0">Title<span class="text-primary">*</span></h2>
+              <input type="text" name="title" placeholder="Tile" formControlName="title"
+                [ngClass]="{ 'is-invalid': submitted && f['title'].errors }">
+
+              <div *ngIf="submitted && f['title'].errors" class="invalid-feedback text-primary">
+                <div *ngIf="f['title'].errors['required']">Title is required!</div>
+                <div *ngIf="f['title'].errors['minlength']">
+                  Title must be at least 3 characters!
+                </div>
+                <div *ngIf="f['title'].errors['maxlength']">
+                  Title must not exceed 20 characters!
+                </div>
+              </div>
+
+            </form>
+            <div class="col-6 my-2">
+              <h2 class="m-0">Topic<span class="text-primary">*</span></h2>
+              <select style="height: 50px;" [(ngModel)]="blogEdit.topic">
+                <option value="choose">Choose</option>
+                <option value="THN">Thể Hình Nam</option>
+                <option value="THNN">Thể Hình Nữ</option>
+                <option value="GATH">Giáo án tập thể hình</option>
+                <option value="KTTH">Kiến thức thể hình</option>
+                <option value="DDTH">Dinh dưỡng thể hình</option>
+                <option value="TTTH">Tin tức thể hình</option>
+                <option value="TTNC">Tập theo nhóm cơ</option>
+              </select>
+              <!-- <input type="text" name="topic" placeholder="Topic" > -->
+              <div *ngIf="submitted && validTopic" class="text-primary">
+                Please select the topic of the blog!
+              </div>
+            </div>
+            <div class="col-6 my-2">
+              <h2 class="m-0">Active</h2>
+              <div class="form-check d-flex align-items-center justify-content-left" style="height: 50px;">
+                <input class="form-check-input" type="checkbox" id="acctive" [(ngModel)]="blogEdit.active">
+              </div>
+            </div>
+
+            <!-- <div class="col-12 my-2"></div> -->
+          </div>
+
+
+          <div class="p-2 d-flex justify-content-center text-center" style="width: 95%;">
+            <button class="btn btn-outline-info" style="font-size: 25px;" [disabled]="btnNewDis"
+              (click)="newId()">New</button>
+            <button class="btn btn-outline-success" style="font-size: 25px;" [disabled]="btnSaveDis"
+              (click)="onSubmit('create')">Create</button>
+            <button class="btn btn-outline-success" style="font-size: 25px;" [disabled]="btnUpdateDis"
+              (click)="onSubmit('update')">Update</button>
+            <button class="btn btn-outline-primary" style="font-size: 25px;" [disabled]="btnDeleteDis"
+              (click)="deleteById(blogEdit.id,-1)">Delete</button>
+          </div>
+
+        </div>
+      </div>
+
+
+      <hr>
+      <div class="row">
+        <div class="col-6">
+          <div class="col-12 my-2">
+            <h2 class="m-0">Contents<span class="text-primary">*</span></h2>
+            <app-my-ck-editor name="blogs" [(ngModel)]="blogEdit.contents"></app-my-ck-editor>
+            <!-- <textarea style="resize: none; min-height: 800px;" [(ngModel)]="productEdit.contents"></textarea> -->
+          </div>
+
+        </div>
+        <div class="col-6">
+          <div class="col-12 my-2">
+            <h2 class="m-0">Review</h2>
+            <div class="" [innerHTML]="viewMedia(blogEdit.contents)"></div>
+            <!-- <app-my-ck-editor [(ngModel)]="blogEdit.contents" [config]="{}" contenteditable="false" [readonly]="true"></app-my-ck-editor> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- <div class="tab-pane fade" id="nav-edit-content" role="tabpanel" aria-labelledby="nav-edit-content-tab"
+      tabindex="0">
+    </div> -->
+  </div>
+</section>

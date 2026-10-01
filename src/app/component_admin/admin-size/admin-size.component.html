@@ -1,0 +1,102 @@
+<section class="mx-3">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="btn btn-outline-info text-dark active" id="nav-table-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-table" type="button" role="tab" aria-controls="nav-table"
+        aria-selected="true">Table</button>
+      <button class="btn btn-outline-info text-dark" id="nav-edit-tab" data-bs-toggle="tab" data-bs-target="#nav-edit"
+        type="button" role="tab" aria-controls="nav-edit" aria-selected="false">Edit</button>
+
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-table" role="tabpanel" aria-labelledby="nav-table-tab" tabindex="0">
+      <!-- Loading -->
+      <div *ngIf="loading" class="d-flex flex-column align-items-center justify-content-center bg-light"
+        style="height: 830px;">
+        <div class="loader">
+          <div class="orbe" style="--index: 0"></div>
+          <div class="orbe" style="--index: 1"></div>
+          <div class="orbe" style="--index: 2"></div>
+          <div class="orbe" style="--index: 3"></div>
+          <div class="orbe" style="--index: 4"></div>
+        </div>
+      </div>
+      <!-- Loading -->
+      <div *ngIf="!loading" class="outer-wrapper my-2 mx-2">
+        <div class="table-wrapper">
+          <table class="table m-0">
+            <thead class="">
+              <tr class="text-center">
+                <th scope="col">#</th>
+                <th scope="col">Tools</th>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th colspan="2" scope="col">Product</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="align-middle text-center" *ngFor="let item of listAll;index as i">
+                <td class="text-center" scope="row">{{i+1}}</td>
+                <td class="text-center">
+                  <button class="btn btn-outline-success p-1 mx-1" style="height: 35px;"
+                    (click)="goToEdit(item,i)">Edit</button>
+                  <button class="btn btn-outline-primary p-1 mx-1" style="height: 35px;"
+                    (click)="deleteById(item.id,i)">Delete</button>
+                </td>
+                <td>{{item?.id}}</td>
+                <td>{{item?.name}}</td>
+                <td>{{item?.product.id}}</td>
+                <td>{{item?.product.name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <div class="tab-pane fade" id="nav-edit" role="tabpanel" aria-labelledby="nav-edit-tab" tabindex="0">
+      <div class="row d-flex justify-content-center">
+        <div class="col-8 row my-4 rounded-5  shadow  bg-body">
+          <div class="col-6 my-2">
+            <h2 class="m-0">Product<span class="text-primary">*</span></h2>
+            <div class="col-12 mb-4">
+              <select style="height: 50px;" [(ngModel)]="chooseProduct">
+                <option value="choose">Choose</option>
+                <option *ngFor="let item of listAllProducts" value="{{item.id}}">({{item.id}}) {{item.name}}</option>
+              </select>
+            </div>
+          </div>
+          <form [formGroup]="form" class="col-6 my-2">
+            <h2 class="m-0">Size<span class="text-primary">*</span></h2>
+            <input type="text" formControlName="name" name="name" placeholder="Size"
+              [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback text-primary">
+              <div *ngIf="f['name'].errors['required']">Size is required!</div>
+              <div *ngIf="f['name'].errors['maxlength']">
+                Size must not exceed 50 characters!
+              </div>
+            </div>
+          </form>
+
+          <!-- <div class="col-12 my-2"></div> -->
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-8 my-4 d-flex justify-content-center">
+          <div class="col-8 d-flex justify-content-around p-2">
+            <button class="btn btn-outline-info" style="font-size: 25px;" [disabled]="btnNewDis"
+              (click)="refreshEdit()">New</button>
+            <button class="btn btn-outline-success" style="font-size: 25px;" [disabled]="btnSaveDis"
+              (click)="onSubmit('create')">Create</button>
+            <button class="btn btn-outline-success" style="font-size: 25px;" [disabled]="btnUpdateDis"
+              (click)="onSubmit('update')">Update</button>
+            <button class="btn btn-outline-primary" style="font-size: 25px;" [disabled]="btnDeleteDis"
+              (click)="deleteById(sizeEdit.id,-1)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,234 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.bodysignin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  // background-image: url(../../../assets/images/intro/intro1.jpg);
+  // background: #343645;
+  // background: #23242a;
+}
+
+.boxsignin {
+  position: relative;
+  width: 380px;
+  height: 480px;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.boxsignin::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 380px;
+  height: 480px;
+  background: linear-gradient(0deg, transparent,
+      #FF2C2C, #FF2C2C);
+  transform-origin: bottom right;
+  animation: animate 6s linear infinite;
+}
+
+.boxsignin::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 380px;
+  height: 480px;
+  background: linear-gradient(0deg, transparent,
+      #FF2C2C, #FF2C2C);
+  transform-origin: bottom right;
+  animation: animate 6s linear infinite;
+  animation-delay: -3s;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.formsignin {
+  position: absolute;
+  inset: 2px;
+  border-radius: 8px;
+  // background-color: #ffffff;
+  z-index: 10;
+  padding: 25px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.formsignin h2 {
+  color: #FF2C2C;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.inputBoxsignin {
+  position: relative;
+  width: 300px;
+  margin-top: 10px;
+}
+
+.inputBoxsignin input {
+  // min-height: 65px;
+  // position: relative;
+  width: 100%;
+  // padding: 20px 10px 0px;
+  background: transparent;
+  // background: #FF2C2C;
+  border: none;
+  outline: none;
+  // color: #23242a;
+  color: white;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  border: 2px solid #FF2C2C;
+  border-radius: 10px;
+  // z-index: 10;
+}
+
+.inputBoxsignin span {
+  // position: absolute;
+  left: 0;
+  padding: 0px;
+  // padding: 20px 0px 10px;
+  font-size: 1em;
+  color: #000000;
+  pointer-events: none;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+}
+
+.inputBoxsignin input:valid,
+.inputBoxsignin input:focus {
+  // color: #000000;
+  background: #FF2C2C;
+  // transform: translateX(0px) translateY(-20px);
+  // font-size: 0.75em;
+}
+
+.inputBoxsignin i {
+  // position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #FF2C2C;
+  border-radius: 4px;
+  transition: 0.5s;
+  pointer-events: none;
+  height: 44px;
+}
+
+// .inputBoxsignin input:valid~i,
+// .inputBoxsignin input:focus~i {
+//   height: 44px;
+// }
+
+.linkssignin {
+  display: flex;
+  justify-content: space-between;
+}
+
+.linkssignin a {
+  margin: 10px 0;
+  font-size: 0.75em;
+  color: #8f8f8f;
+  text-decoration: none;
+}
+
+.linkssignin a:hover,
+.linkssignin a:nth-child(2) {
+  color: #FF2C2C;
+}
+
+input[type="submit"] {
+  color: white;
+  border: none;
+  outline: none;
+  background: #FF2C2C;
+  padding: 11px 25px;
+  width: 100px;
+  margin-top: 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+input[type="submit"]:active {
+  opacity: 0.8;
+}
+
+.backgroundform {
+  position: absolute;
+  inset: 2px;
+  border-radius: 8px;
+  background-image: url(../../../assets/images/intro/intro1.jpg);
+  background-position-x: -752px;
+  background-position-y: -233px;
+  z-index: 10;
+  padding: 25px 40px;
+  display: flex;
+  flex-direction: column;
+  filter: blur(1.75px);
+  -webkit-filter: blur(1.75px);
+}
+
+.loader {
+  --size-loader: 30px;
+  --size-orbe: 10px;
+  width: var(--size-loader);
+  height: var(--size-loader);
+  position: relative;
+  transform: rotate(45deg);
+}
+
+.orbe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  --delay: calc(var(--index) * 0.1s);
+  animation: orbit7456 ease-in-out 1.5s var(--delay) infinite;
+  opacity: calc(1 - calc(0.2 * var(--index)));
+}
+
+.orbe::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: var(--size-orbe);
+  height: var(--size-orbe);
+  background-color: #FF2C2C;
+  box-shadow: 0px 0px 20px 2px #FF2C2C;
+  border-radius: 50%;
+}
+
+@keyframes orbit7456 {
+  0% {
+  }
+
+  80% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

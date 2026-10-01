@@ -1,0 +1,225 @@
+<section class="mx-3">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="btn btn-outline-info text-dark active" id="nav-table-flavorcolordetail-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-table-flavorcolordetail" type="button" role="tab"
+        aria-controls="nav-table-flavorcolordetail" aria-selected="true">Table Flavor Or Color Detail</button>
+      <button class="btn btn-outline-info text-dark" id="nav-edit-flavorcolordetail-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-edit-flavorcolordetail" type="button" role="tab" aria-controls="nav-edit-flavorcolordetail"
+        aria-selected="false">Edit Flavor Or Color Detail</button>
+      <button class="btn btn-outline-info text-dark" id="nav-table-flavorcolor-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-table-flavorcolor" type="button" role="tab" aria-controls="nav-table-flavorcolor"
+        aria-selected="true">Table Flavor Or Color</button>
+      <button class="btn btn-outline-info text-dark" id="nav-edit-flavorcolor-tab" data-bs-toggle="tab"
+        data-bs-target="#nav-edit-flavorcolor" type="button" role="tab" aria-controls="nav-edit-flavorcolor"
+        aria-selected="false">Edit Flavor Or Color</button>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-table-flavorcolordetail" role="tabpanel"
+      aria-labelledby="nav-table-flavorcolordetail-tab" tabindex="0">
+      <!-- Loading -->
+      <div *ngIf="loading1" class="d-flex flex-column align-items-center justify-content-center bg-light"
+        style="height: 830px;">
+        <div class="loader">
+          <div class="orbe" style="--index: 0"></div>
+          <div class="orbe" style="--index: 1"></div>
+          <div class="orbe" style="--index: 2"></div>
+          <div class="orbe" style="--index: 3"></div>
+          <div class="orbe" style="--index: 4"></div>
+        </div>
+      </div>
+      <!-- Loading -->
+      <div *ngIf="!loading1" class="outer-wrapper my-2 mx-2">
+        <div class="table-wrapper">
+          <table class="table">
+            <thead class="">
+              <tr class="text-center">
+                <th scope="col">#</th>
+                <th scope="col">Tools</th>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Active</th>
+                <th scope="col">Create Day</th>
+                <th scope="col">Update Day</th>
+                <th scope="col">Delete Day</th>
+                <th scope="col">Person Create</th>
+                <th scope="col">Person Update</th>
+                <th scope="col">Person Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="align-middle text-center" *ngFor="let item of listAllDetail;index as i">
+                <td class="text-center" scope="row">{{i+1}}</td>
+                <td class="text-center">
+                  <button class="btn btn-outline-success p-1 mx-1" style="height: 35px;"
+                    (click)="goToEditDetail(item,i)">Edit</button>
+                  <button class="btn btn-outline-primary p-1 mx-1" style="height: 35px;"
+                    (click)="deleteDetailById(item.id,i)">Delete</button>
+                </td>
+                <td>{{item?.id}}</td>
+                <td>{{item?.name}}</td>
+                <td class="text-center">{{item?.active?'Yes':'No'}}</td>
+                <td>{{item?.createday|date:"dd/MM/yyyy"}}</td>
+                <td>{{item?.updateday|date:"dd/MM/yyyy"}}</td>
+                <td>{{item?.deleteday|date:"dd/MM/yyyy"}}</td>
+                <td>{{item?.personcreate}}</td>
+                <td>{{item?.personupdate}}</td>
+                <td>{{item?.persondelete}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade show" id="nav-table-flavorcolor" role="tabpanel"
+      aria-labelledby="nav-table-flavorcolor-tab" tabindex="0">
+      <!-- Loading -->
+      <div *ngIf="loading2" class="d-flex flex-column align-items-center justify-content-center bg-light"
+        style="height: 830px;">
+        <div class="loader">
+          <div class="orbe" style="--index: 0"></div>
+          <div class="orbe" style="--index: 1"></div>
+          <div class="orbe" style="--index: 2"></div>
+          <div class="orbe" style="--index: 3"></div>
+          <div class="orbe" style="--index: 4"></div>
+        </div>
+      </div>
+      <!-- Loading -->
+      <div *ngIf="!loading2" class="outer-wrapper my-2 mx-2">
+        <div class="table-wrapper">
+          <table class="table m-0">
+            <thead class="">
+              <tr class="text-center">
+                <th scope="col">#</th>
+                <th scope="col">Tools</th>
+                <th scope="col">Id</th>
+                <th scope="col">Id Product</th>
+                <th scope="col">Name Product</th>
+                <th scope="col">Id Flavor Or Color Detail</th>
+                <th scope="col">Name Flavor Or Color Detail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="align-middle text-center" *ngFor="let item of listAll;index as i">
+                <td class="text-center" scope="row">{{i+1}}</td>
+                <td class="text-center">
+                  <button class="btn btn-outline-success p-1 mx-1" style="height: 35px;"
+                    (click)="goToEdit(item,i)">Edit</button>
+                  <button class="btn btn-outline-primary p-1 mx-1" style="height: 35px;"
+                    (click)="deleteById(item.id,i)">Delete</button>
+                </td>
+                <td class="text-center">{{item?.id}}</td>
+                <td>{{item?.product.id}}</td>
+                <td>{{item?.product.name}}</td>
+                <td>{{item?.flavorOrColorDetail.id}}</td>
+                <td>{{item?.flavorOrColorDetail.name}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tab-pane fade" id="nav-edit-flavorcolordetail" role="tabpanel"
+      aria-labelledby="nav-edit-flavorcolordetail-tab" tabindex="0">
+      <div class="row d-flex justify-content-center">
+        <form [formGroup]="form" class="col-8 row my-4 rounded-5 shadow bg-body">
+          <div class="col-6 my-2">
+            <h2 class="m-0">Id<span class="text-primary">*</span></h2>
+            <input type="text" name="id" placeholder="Id" formControlName="id"
+              [ngClass]="{ 'is-invalid': submitted && f['id'].errors }" [readOnly]="readonly">
+
+            <div *ngIf="submitted && f['id'].errors" class="invalid-feedback text-primary">
+              <div *ngIf="f['id'].errors['required']">Flavor Or Color Detail Id is required!</div>
+              <div *ngIf="f['id'].errors['minlength']">
+                Flavor Or Color Detail Id must be at least 3 characters!
+              </div>
+              <div *ngIf="f['id'].errors['maxlength']">
+                Flavor Or Color Detail Id must not exceed 10 characters!
+              </div>
+              <div *ngIf="f['id'].errors['pattern']">
+                Flavor Or Color Detail Id must be lowercase letters and numbers!
+              </div>
+            </div>
+          </div>
+          <div class="col-6 my-2">
+            <h2 class="m-0">Name<span class="text-primary">*</span></h2>
+            <input type="text" name="name" placeholder="Name" formControlName="name"
+              [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback text-primary">
+              <div *ngIf="f['name'].errors['required']">Flavor Or Color Detail Name is required!</div>
+              <div *ngIf="f['name'].errors['maxlength']">
+                Flavor Or Color Detail Name must not exceed 25 characters!
+              </div>
+            </div>
+          </div>
+          <div class="col-12 my-2 text-center">
+            <h2 class="m-0">Active<span class="text-primary">*</span></h2>
+            <div class="form-check d-flex align-items-center justify-content-center" style="height: 50px;">
+              <input class="form-check-input" type="checkbox" [(ngModel)]="flavorColorDetailEdit.active"
+                [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <!-- <div class="col-12 my-2"></div> -->
+        </form>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-8 my-4 d-flex justify-content-center">
+          <div class="col-8 d-flex justify-content-around p-2">
+            <button class="btn btn-outline-info" style="font-size: 25px;" [disabled]="btnNewDetailDis"
+              (click)="refreshDetailEdit()">New</button>
+            <button class="btn btn-outline-success" style="font-size: 25px;" [disabled]="btnSaveDetailDis"
+              (click)="onSubmit('create')">Create</button>
+            <button class="btn btn-outline-success" style="font-size: 25px;" [disabled]="btnUpdateDetailDis"
+              (click)="onSubmit('update')">Update</button>
+            <button class="btn btn-outline-primary" style="font-size: 25px;" [disabled]="btnDeleteDetailDis"
+              (click)="deleteDetailById(flavorColorDetailEdit.id,-1)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="nav-edit-flavorcolor" role="tabpanel" aria-labelledby="nav-edit-flavorcolor-tab"
+      tabindex="0">
+      <div class="row d-flex justify-content-center">
+        <div class="col-8 row my-4 rounded-5  shadow  bg-body">
+          <div class="col-6 my-2">
+            <h2 class="m-0">Product<span class="text-primary">*</span></h2>
+            <div class="col-12 mb-4">
+              <select style="height: 50px;" [(ngModel)]="chooseProduct">
+                <option value="choose">Choose</option>
+                <option *ngFor="let item of listAllProducts" value="{{item.id}}">({{item.id}}) {{item.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-6 my-2">
+            <h2 class="m-0">Flavor Or Color Detail<span class="text-primary">*</span></h2>
+            <div class="col-12 mb-4">
+              <select style="height: 50px;" [(ngModel)]="chooseDetail">
+                <option value="choose">Choose</option>
+                <option *ngFor="let item of listAllDetail" value="{{item.id}}">({{item.id}}) {{item.name}}</option>
+              </select>
+            </div>
+          </div>
+          <!-- <div class="col-12 my-2"></div> -->
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-8 my-4 d-flex justify-content-center">
+          <div class="col-8 d-flex justify-content-around p-2">
+            <button class="btn btn-outline-info" style="font-size: 25px;" [disabled]="btnNewDis"
+              (click)="refreshEdit()">New</button>
+            <button class="btn btn-outline-success" style="font-size: 25px;" [disabled]="btnSaveDis"
+              (click)="save()">Create</button>
+            <button class="btn btn-outline-success" style="font-size: 25px;" [disabled]="btnUpdateDis"
+              (click)="update()">Update</button>
+            <button class="btn btn-outline-primary" style="font-size: 25px;" [disabled]="btnDeleteDis"
+              (click)="deleteById(flavorColorEdit.id,-1)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

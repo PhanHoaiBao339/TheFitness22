@@ -1,0 +1,65 @@
+
+
+
+button {
+  width: 100%;
+  height: 250px;
+  position: relative;
+  font-size: 14px;
+  letter-spacing: 3px;
+  padding: 0px;
+  border: none;
+  // background-color: #ff2c2c;
+  background-image: url(../../../assets/images/bg/breadcrumb-shop.jpg);
+  color: #fff;
+  text-transform: uppercase;
+  overflow: hidden;
+  border-radius: 5px
+ }
+
+ button::before {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  left: 0;
+  height: 0px;
+  width: 100%;
+  background: rgb(196,27,84);
+  background: linear-gradient(90deg, rgb(196, 27, 36) 20%, rgb(124, 7, 21) 100%);
+  transition: 0.2s;
+ }
+
+ button .label {
+  position: relative;
+  font-size: 32px;
+  line-height: 1.3;
+  letter-spacing: 2px;
+  font-style: italic;
+  font-family: "Proxima Nova Rg";
+  font-weight: 700;
+  margin-bottom: 5px;
+ }
+
+ button .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  // width: 3em;
+  position: absolute;
+  top: 3em;
+  right: 0;
+  opacity: 0;
+  transition: 0.4s;
+ }
+
+ button:hover::before {
+  height: 100%;
+ }
+
+ button:hover .icon {
+  top: 0;
+  opacity: 1;
+ }

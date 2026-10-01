@@ -1,0 +1,182 @@
+<!-- Page Title Section Start -->
+
+<div class="page-title-section section" style="background-image: url(../../assets/images/bg/breadcrumb-shop.jpg);">
+  <div class="page-title pt-lg-10 pt-10">
+    <div class="container">
+      <h1 class="title">{{titlePage}}</h1>
+    </div>
+  </div>
+</div>
+<!-- Page Title Section End -->
+
+<!-- Shop Page Section Start -->
+<div class="section section-padding-t150-b130 section-fluid">
+  <div class="container">
+    <div class="row mb-10">
+      <div class="col-12">
+        <!-- Shop Top Bar Start -->
+        <div class="shop-top-bar shop-top-bar-flex" data-aos="fade-up">
+          <div class="shop-topbar-left align-items-center">
+            <div class="page-show">
+              <ul>
+                <li>Show</li>
+                <li><a class="hover-primary" (click)="changerLimit(8)">8</a></li>
+                <li><a class="hover-primary" (click)="changerLimit(12)">12</a></li>
+                <li><a class="hover-primary" (click)="changerLimit(16)">16</a></li>
+                <li><a class="hover-primary" (click)="changerLimit(20)">20</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="shop-topbar-right shop-tab-flex align-items-center">
+            <div class="">
+              <input type="text" [(ngModel)]="searchValue" placeholder="Seach...."(keyup.enter)="search()">
+            </div>
+            <div class="me-4">
+              <button class="btn btn-hover-success border-light fs-2 px-2" (click)="search()"><i class='bx bx-search-alt-2'></i></button>
+            </div>
+
+            <div class="short-by">
+              <a>Sort By</a>
+              <ul class="sort-by-dropdown">
+                <li class="active"><a (click)="sort('')">Default sorting</a></li>
+                <!-- <li><a href="#">Sort by popularity</a></li>
+                <li><a href="#">Sort by average rating</a></li>
+                <li><a href="#">Sort by newness</a></li> -->
+                <li><a (click)="sort('low to high')">Sort by price: low to high</a></li>
+                <li><a (click)="sort('high to low')">Sort by price: high to low</a></li>
+              </ul>
+            </div>
+            <!-- <div class="filter short-by">
+              <a href="#">filter</a>
+              <ul class="sort-by-dropdown">
+                <li class="active"><a href="#">Default Filter</a></li>
+                <li><a href="#">9 items</a></li>
+                <li><a href="#">16 items</a></li>
+                <li><a href="#">13 items</a></li>
+              </ul>
+            </div> -->
+            <!-- <div class="shop-tab nav">
+              <a class="active" href="#">
+                <i class="fa fa-th"></i>
+              </a>
+            </div> -->
+          </div>
+        </div>
+        <!-- Shop Top Bar End -->
+      </div>
+    </div>
+    <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-sm-2 row-cols-1 mb-n10">
+      <div [hidden]="showList" class="col" data-aos="fade-up" *ngFor="let item of list |filter:seachSmall; index as i">
+        <!--  Single Grid product Start -->
+        <div [hidden]="!limitProduct(i)" class="card mb-10">
+          <div class="single-grid-product">
+            <div class="product-image">
+              <a [routerLink]="['/product-details',item.id]" routerLinkActive="router-link-active">
+                <img src="{{rootUrl}}{{item.image1}}" class="w-100" alt="">
+              </a>
+              <!-- <div class="product-action">
+              <ul>
+                <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
+                <li><a [routerLink]="['/product-details',item.id]" routerLinkActive="router-link-active"><i
+                      class="fa fa-shopping-cart"></i></a></li>
+              </ul>
+            </div> -->
+            </div>
+            <div class="product-content text-center">
+              <h1 class="item-name"><a [routerLink]="['/product-details',item.id]"
+                  routerLinkActive="router-link-active">{{item.name}}</a>
+              </h1>
+              <p class="product-price text-primary">
+                <!-- <span class="main-price discounted"><del>{{item.price| currency:'VND':'VNĐ'}}</del></span> -->
+                <span class="discounted-price">{{item.price | currency:'VND':'VNĐ'}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!--  Single Grid product End -->
+      </div>
+      <div [hidden]="showListLTH" class="col" data-aos="fade-up" *ngFor="let item of listSortLTH |filter:seachSmall; index as i">
+        <!--  Single Grid product Start -->
+        <div [hidden]="!limitProduct(i)" class="card mb-10">
+          <div class="single-grid-product">
+            <div class="product-image">
+              <a [routerLink]="['/product-details',item.id]" routerLinkActive="router-link-active">
+                <img src="{{rootUrl}}{{item.image1}}" class="w-100" alt="">
+              </a>
+              <!-- <div class="product-action">
+              <ul>
+                <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
+                <li><a [routerLink]="['/product-details',item.id]" routerLinkActive="router-link-active"><i
+                      class="fa fa-shopping-cart"></i></a></li>
+              </ul>
+            </div> -->
+            </div>
+            <div class="product-content text-center">
+              <h1 class="item-name"><a [routerLink]="['/product-details',item.id]"
+                  routerLinkActive="router-link-active">{{item.name}}</a>
+              </h1>
+              <p class="product-price text-primary">
+                <!-- <span class="main-price discounted"><del>{{item.price| currency:'VND':'VNĐ'}}</del></span> -->
+                <span class="discounted-price">{{item.price | currency:'VND':'VNĐ'}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!--  Single Grid product End -->
+      </div>
+      <div [hidden]="showListHTL" class="col" data-aos="fade-up" *ngFor="let item of listSortHTL |filter:seachSmall; index as i">
+        <!--  Single Grid product Start -->
+        <div [hidden]="!limitProduct(i)" class="card mb-10">
+          <div class="single-grid-product">
+            <div class="product-image">
+              <a [routerLink]="['/product-details',item.id]" routerLinkActive="router-link-active">
+                <img src="{{rootUrl}}{{item.image1}}" class="w-100" alt="">
+              </a>
+              <!-- <div class="product-action">
+              <ul>
+                <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
+                <li><a [routerLink]="['/product-details',item.id]" routerLinkActive="router-link-active"><i
+                      class="fa fa-shopping-cart"></i></a></li>
+              </ul>
+            </div> -->
+            </div>
+            <div class="product-content text-center">
+              <h1 class="item-name"><a [routerLink]="['/product-details',item.id]"
+                  routerLinkActive="router-link-active">{{item.name}}</a>
+              </h1>
+              <p class="product-price text-primary">
+                <!-- <span class="main-price discounted"><del>{{item.price| currency:'VND':'VNĐ'}}</del></span> -->
+                <span class="discounted-price">{{item.price | currency:'VND':'VNĐ'}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!--  Single Grid product End -->
+      </div>
+    </div>
+    <div class="row" data-aos="fade-up">
+      <div class="col-12 mt-xl-20 mt-10 text-center">
+        <a class="shop-load-more-btn" (click)="loadMoreProduct()">
+          <div *ngIf="!loading">
+            Load More <i class="fal fa-arrow-down"></i>
+          </div>
+          <!-- Loading -->
+          <div *ngIf="loading" class="d-flex flex-column align-items-center justify-content-center"
+            style="height: 830px;">
+            <div class="loader">
+              <div class="orbe" style="--index: 0"></div>
+              <div class="orbe" style="--index: 1"></div>
+              <div class="orbe" style="--index: 2"></div>
+              <div class="orbe" style="--index: 3"></div>
+              <div class="orbe" style="--index: 4"></div>
+            </div>
+          </div>
+          <!-- Loading -->
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Shop Page Section End -->

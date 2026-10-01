@@ -1,0 +1,149 @@
+<div class="page-title-section section" style="background-image: url(../../assets/images/bg/breadcrumb-blog.jpg)">
+  <div class="page-title pt-lg-10 pt-10">
+    <div class="container">
+      <h1 class="title">CALCULATE YOUR CARBOHYDRATE ON DAY</h1>
+    </div>
+  </div>
+</div>
+
+<div class="section pt-10">
+  <div class="container">
+    <div class="row">
+      <!-- Body start-->
+      <div class="col-12">
+        <!-- Tool start -->
+        <div class="dpg-calculator protein-calculator col-lg-9">
+          <h2 class="dpg-h2 calc-header">Công cụ tính lượng carb cần nạp 1 ngày</h2>
+          <div class="calc-container">
+            <span class="calc-subheader">Số tuổi</span>
+            <div class="calc-row">
+              <input [(ngModel)]="age" class="bbTextBox calc-textbox" name="age" placeholder="Nhập tuổi" value=""
+                type="number" />
+            </div>
+            <span class="calc-subheader">Giới tính</span>
+            <div class="calc-row">
+              <input [(ngModel)]="sex" id="protein-male" name="sex" [value]=true type="radio" />
+              <label class="calc-label-small" for="protein-male">
+                <span></span>
+                Nam
+              </label>
+              <input [(ngModel)]="sex" id="protein-female" name="sex" [value]=false type="radio" />
+              <label class="calc-label-small calc-float-right" for="protein-female">
+                <span></span>
+                Nữ
+              </label>
+            </div>
+            <span class="calc-subheader">Chiều cao</span>
+            <div class="calc-row">
+              <input [(ngModel)]="heightType" (change)="types1()" id="protein-feet" name="height-system" [value]=false
+                type="radio" />
+              <label class="calc-label-small calc-float-right" for="protein-feet">
+                <span></span>
+                Tính theo Feet
+              </label>
+              <input [(ngModel)]="heightType" (change)="types1()" id="protein-meters" name="height-system" [value]=true
+                type="radio" />
+              <label class="calc-label-small" for="protein-meters">
+                <span></span>
+                Tính theo Mét
+              </label>
+            </div>
+            <div class="calc-row">
+              <input [(ngModel)]="heightTens" class="bbTextBox calc-textbox-half" name="height-tens"
+                placeholder="{{placeholderHeight}}" value="" type="number" />
+              <input [(ngModel)]="heightUnits" class="bbTextBox calc-textbox-half calc-float-right" name="height-units"
+                placeholder="{{placeholderHeightUnits}}" value="" type="number" />
+            </div>
+            <span class="calc-subheader">Cân nặng</span>
+            <div class="calc-row">
+              <input [(ngModel)]="weightType" (change)="types2()" id="protein-pounds" name="weight-system" [value]=false
+                type="radio" />
+              <label class="calc-label-small calc-float-right" for="protein-pounds">
+                <span></span>
+                Tính theo Pounds
+              </label>
+              <input [(ngModel)]="weightType" (change)="types2()" id="protein-kilos" name="weight-system" [value]=true
+                type="radio" />
+              <label class="calc-label-small" for="protein-kilos">
+                <span></span>
+                Tính theo Kilograms
+              </label>
+            </div>
+            <div class="calc-row">
+              <input [(ngModel)]="weight" name="weight" class="bbTextBox calc-textbox"
+                placeholder="{{placeholderWeightUnits}}" type="number" />
+            </div>
+            <span class="calc-subheader">Mục tiêu</span>
+            <div class="calc-row">
+              <input [(ngModel)]="goal" id="protein-goal1" name="goal" [value]="'fat-loss'" type="radio" />
+              <label class="calc-label" for="protein-goal1">
+                <span></span>
+                Giảm mỡ
+              </label>
+            </div>
+            <div class="calc-row">
+              <input [(ngModel)]="goal" id="protein-goal2" name="goal" [value]="'maintenance'" type="radio" />
+              <label class="calc-label" for="protein-goal2">
+                <span></span>
+                Duy trì
+              </label>
+            </div>
+            <div class="calc-row">
+              <input [(ngModel)]="goal" id="protein-goal3" name="goal" [value]="'gainz'" type="radio" />
+              <label class="calc-label" for="protein-goal3">
+                <span></span>
+                Tăng cơ
+              </label>
+            </div>
+            <span class="calc-subheader">Cường độ tập luyện</span>
+            <div class="calc-row">
+              <input [(ngModel)]="job" id="protein-activity1" name="activity" value="L" type="radio" />
+              <label class="calc-label" for="protein-activity1">
+                <span></span>
+                Ít tập (1-2 lần/tuần)
+              </label>
+            </div>
+            <div class="calc-row">
+              <input [(ngModel)]="job" id="protein-activity2" name="activity" value="M" type="radio" />
+              <label class="calc-label" for="protein-activity2">
+                <span></span>
+                Thỉnh thoảng tập (3-4 lần/tuần)
+              </label>
+            </div>
+            <div class="calc-row">
+              <input [(ngModel)]="job" id="protein-activity3" name="activity" value="V" type="radio" />
+              <label class="calc-label" for="protein-activity3">
+                <span></span>
+                Tập nhiều (5-6 lần/tuần))
+              </label>
+            </div>
+            <div class="calc-row">
+              <input [(ngModel)]="job" id="protein-activity4" name="activity" value="E" type="radio" />
+              <label class="calc-label" for="protein-activity4">
+                <span></span>
+                Rất nhiều (2 lần/ngày)
+              </label>
+            </div>
+            <div class="d-flex justify-content-center p-3">
+              <button (click)="calc()" class="btn btn-outline-secondary btn-hover-primary" type="button">Tính
+                ngay</button>
+            </div>
+            <div class="calc-row d-flex flex-column" style="text-align: center;">
+              <p class="calc-subheader calc-answer" style=" display: block; color: #3FB178;">
+                Lượng carbohydrate cần nạp trong 1 ngày của bạn là:
+              </p>
+              <p class="calc-subheader calc-answer" style="display: block; color: #3FB178; font-size: 24px;">
+                <b>{{protons}}</b>
+              </p>
+            </div>
+
+          </div>
+          <!-- Tool end -->
+        </div>
+
+        <!-- Body end-->
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCE -->
